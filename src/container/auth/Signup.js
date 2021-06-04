@@ -2,24 +2,24 @@ import React from 'react';
 import photo from '../../assets/img/rupkotha.png'
 import AuthInput from '../../component/authInput/AuthInput';
 import Button from '../../component/button/Button';
-const Signin = () => {
+
+const Signup = () => {
     return (
-        <div className='auth__wrapper signin'> 
+        <div className='auth__wrapper signup'> 
             <div className='auth__container'>
                 <div className='auth__logo'>
                     <img src={photo} alt='logo' />
-                    <h2>Log In</h2>
-                </div>   
+                    <h2>Register</h2>
+                </div>
+                <AuthInput placeholder='User Name' />
                 <AuthInput placeholder='E-mail' />
                 <AuthInput placeholder='Placeholder' />
-                <Button text='Sign in' />
-                <div className='auth__link'>
-                    <p className='auth__link__new-member'><a href='/register'>register </a>here</p>
-                    <a href='/forgot-password'>forgot password?</a>
-                </div>
+                <AuthInput placeholder='Confirm Password' />
+                <Button text='Sign Up' />
+                <a className='cancel__button' href='/'>Cancel</a>
             </div>
         </div>
     );
 };
 
-export default Signin;
+export default Signup;

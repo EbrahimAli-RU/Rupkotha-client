@@ -1,14 +1,9 @@
 .auth {
     &__wrapper {
-        height: 100vh;
-        background-image: url(../../../assets/img/1.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        justify-content: center;
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100vh;
     }
 
     &__container {
@@ -17,19 +12,19 @@
         flex-direction: column;
         align-items: center;
         width: 38rem;
-        height: 64vh;
         background-color: $color-white;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     }
 
     &__logo {
         margin-top: 3rem;
-        width: 14rem;
+        width: 80%;
         img {
-            width: 100%;
+            margin-left: 28%;
+            @include icon-size(13rem)
         }
         h2 {
-            padding: 1rem 0;
+            padding: 1.4rem 0;
             text-align: center;
         }
     }
@@ -38,6 +33,7 @@
         display: flex;
         justify-content: space-between;
         font-size: 1.4rem;
+        padding-bottom: 3rem;
         &__new-member {
             a {
                 &:hover {
@@ -52,4 +48,16 @@
             }
         }
     }
+}
+
+.signin {
+    @include bgimage('../../assets/img/#{randomNum(1, 6)}.jpg');
+}
+
+.signup {
+    @include bgimage('../../assets/img/#{randomNum(1, 6)}.jpg');
+}
+
+.forgotPassword {
+    @include bgimage('../../assets/img/#{randomNum(1, 6)}.jpg');
 }

@@ -1,4 +1,11 @@
-@mixin icon-size($width, $height) {
+@mixin icon-size($width) {
     width: $width;
-    height: $height;
 }
+
+@mixin bgimage($img) {
+    background-image: url($img);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
