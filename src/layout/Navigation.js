@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from '../assets/img/rupkotha.png'
-import profile from '../assets/img/profile.png'
 import Icon from '../assets/img/sprite.svg'
+import Dropdown from '../component/Dropdown';
+
 const Navigation = () => {
     return (
         <header className='nav'>
@@ -28,7 +29,7 @@ const Navigation = () => {
                         </svg>
                     </div>
                 </a>
-                <img src={profile} alt='profile' />
+                <Dropdown />
                 
             </div>
         </header>
