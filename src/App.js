@@ -1,7 +1,8 @@
+import Signin from './container/auth/Signin';
 import './sass/main.scss'
 function App() {
   return (
-    <div className='red'>RUPKOTHA</div>
+    <Signin />
   );
 }
 

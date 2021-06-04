@@ -4,3 +4,9 @@
 @import 'utils/mixin';
 
 @import 'base/reset';
+
+//COMPONENT
+@import 'component/authInput';
+@import 'component/button/button';
+
+@import 'pages/auth/signin';
