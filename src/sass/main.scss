@@ -4,7 +4,7 @@
 @import 'utils/utiliti';
 @import 'utils/variable';
 
-
+//BASE
 @import 'base/reset';
 
 //COMPONENT
@@ -12,4 +12,8 @@
 @import 'component/button/button';
 @import 'component/button/cancelbutton';
 
+//LAYOUT
+@import 'layout/navigation';
+
+//PAGES
 @import 'pages/auth/signin';
