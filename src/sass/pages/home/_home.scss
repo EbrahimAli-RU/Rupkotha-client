@@ -46,5 +46,33 @@
             box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
         }
     }
+
+    &__books {
+        margin: 6rem 0;
+
+        &__category {
+            display: flex;
+            justify-content: space-between;
+            
+            p {
+                font-size: 2.2rem;
+                font-family: 'Open Sans';
+                font-weight: 600;
+                margin-left: 2rem;
+            }
+
+            a:link,
+            a:visited {
+                font-family: 'Open Sans';
+                font-weight: 400;
+                margin-right: 2rem;
+                transition: all .2s;
+            }
+            a:hover {
+                transform: translateY(-2px);
+                color: var(--color-primary-dark-1);
+            }
+        }
+    }
     
 }
