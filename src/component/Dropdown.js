@@ -9,7 +9,7 @@ const Dropdown = () => {
                     <img className='dropdown-content-profile' src={profile} alt='profile' />
                     <p>Isita</p>
                 </div>
-                <button className='dropdown-content-button'><a href="/">Change Profile</a></button>
+                <button className='dropdown-content-button'><a href="/select/profile">Change Profile</a></button>
                 <a className='dropdown-content__link' href="/">Edit Profile</a>
                 <a className='dropdown-content__link' href="/">Account</a>
                 <a className='dropdown-content__link' href="/">Resources</a>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Navigation from '../../layout/Navigation'
 import Icon from '../../assets/img/sprite.svg'
 import Book from '../../assets/img/little.png'
 import BookCard from '../../component/bookCard/BookCard';
@@ -9,7 +8,6 @@ const main = () => {
     return (
         <>
             <div className='main__carosoul'>
-                <Navigation />
                 <div className='main__carosoul__content'>
                     <div className='main__carosoul__left__div'>
                         <h1>Little Socks Makes a Friend</h1>

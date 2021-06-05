@@ -2,6 +2,13 @@
     width: $width;
 }
 
+@mixin center-element($top) {
+    position: absolute;
+    left: 50%;
+    top: $top;
+    transform: translate(-50%, -50%);
+}
+
 @mixin bgimage($img) {
     background-image: url($img);
     background-repeat: no-repeat;
