@@ -13,6 +13,7 @@
 @import 'component/button/button';
 @import 'component/button/cancelbutton';
 @import 'component/bookCard';
+@import 'component/profile/profileImage';
 
 //LAYOUT
 @import 'layout/navigation';
@@ -21,3 +22,4 @@
 @import 'pages/selectProfile';
 @import 'pages/auth/signin';
 @import 'pages/home/home';
+@import 'pages/profile/selectNewProfileImg';
