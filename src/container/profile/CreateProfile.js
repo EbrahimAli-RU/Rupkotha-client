@@ -2,6 +2,7 @@ import React from 'react';
 import profile from '../../assets/img/profile.png'
 import AuthInput from '../../component/authInput/AuthInput';
 import Button from '../../component/button/Button';
+import { withRouter } from 'react-router-dom'
 
 const CreateProfile = () => {
     return (
@@ -19,4 +20,4 @@ const CreateProfile = () => {
     );
 };
 
-export default CreateProfile;
+export default withRouter(CreateProfile);

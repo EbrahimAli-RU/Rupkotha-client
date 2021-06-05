@@ -1,0 +1,46 @@
+.profile__interest {
+    &__wrapper {
+        margin-top: 5rem;
+        @include center-element(50%);
+    }
+    &__content {
+        width: 64vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h2 {
+            padding: 1rem 0;
+        }
+        p {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__topic {
+        cursor: pointer;
+        margin: 1rem 0 1rem 2rem;
+        display: inline-block;
+        border-radius: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        img {
+            width: 5rem;
+            margin: 1rem 6rem .2rem 6rem;
+        }
+        p {
+            text-align: center;
+            color: var( --color-Primary-light);
+            font-weight: bold;
+            padding-top: -1rem;
+            padding-bottom: 1rem;
+        }
+    }
+
+    &__topic__wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
