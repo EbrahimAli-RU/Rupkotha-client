@@ -12,7 +12,7 @@
     }
 
     &-content {
-        right: 0;
+        right: 2rem;
         display: none;
         position: absolute;
         background-color: $color-white;
@@ -20,6 +20,7 @@
         width: 20rem;
         box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
         z-index: 100;
+
         &-profile {
             height: 4.5rem;
             margin: 1.6rem;
