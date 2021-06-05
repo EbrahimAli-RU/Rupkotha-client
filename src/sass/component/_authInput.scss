@@ -1,7 +1,7 @@
 .auth__input {
-    &__custom-field {
         margin: 1rem 0;
         width: 80%;
+    &__custom-field {
         position: relative;
         font-size: 1.4rem;
         input {
@@ -23,7 +23,7 @@
             &:valid  + .auth__input__placeholder,
             &:focus + .auth__input__placeholder {
                 background-color: $color-white;
-                top: 0px;
+                top: -1.2rem;
                 font-size: 1rem;
                 color: var(--color-Grey-dark-2);
                 padding: .5rem;
