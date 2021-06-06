@@ -12,19 +12,21 @@
         margin-top: 3rem;
     }
     &__recent-search-title {
-        font-size: 2rem;
-        color: $color-black;
-        background-color: paleturquoise;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 1.6rem;
+        color: #0a96e6;
+        background-color: #e6f5fe;
         display: inline-block;
         border-radius: 10rem;
-        padding: 1rem 4rem;
+        padding: .8rem 4rem;
         margin-right: 1rem;
         margin-bottom: 2rem;
         cursor: pointer;
         transition: all .2s ease-out;
 
         &:hover {
-            background-color: darken($color: paleturquoise, $amount: 20%);
+            background-color: darken($color: #e6f5fe, $amount: 20%);
         }
     }
     &__title__wrapper {

@@ -28,10 +28,10 @@ const SearchBook = () => {
                 <div className='search__book__recent-searchs'>
                     <h2>Popular Searches</h2>
                     <div className='search__book__title__wrapper' >
-                        <Profile profile={profile} name='default' isDisplay={false} />
-                        <Profile profile={profile} name='default' isDisplay={false} />
-                        <Profile profile={profile} name='default' isDisplay={false} />
-                        <Profile profile={profile} name='default' isDisplay={false} />
+                        <Profile profile={profile} width={true} name='default' isDisplay={false} />
+                        <Profile profile={profile} width={true} name='default' isDisplay={false} />
+                        <Profile profile={profile} width={true} name='default' isDisplay={false} />
+                        <Profile profile={profile} width={true} name='default' isDisplay={false} />
                     </div>
                 </div>
             </div>
