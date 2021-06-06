@@ -6,7 +6,7 @@ const SelectNewProfileImg = () => {
     const arr = ['Unicorn and Horse', 'Unicorn and Horse']
     return (
         <>
-            <ProfileTitle />
+            <ProfileTitle title='Choose Your Avater' />
             <div className='select__new__profile__img'>
                 <ProfileImage profiles={arr}/>
             </div>

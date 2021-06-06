@@ -1,6 +1,8 @@
 import React from 'react';
 import profile from '../../assets/img/profile.png'
 import Icon from '../../assets/img/sprite.svg'
+import Profile from '../../component/profileTitle/Profile';
+import SearchBox from '../../component/searchBox/SearchBox';
 const SelectProfile = () => {
     return (
         <div className='select__profile__container'>
@@ -9,21 +11,13 @@ const SelectProfile = () => {
                 <button className='btn btn-read'> 
                     <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
                             <use xlinkHref={`${Icon}#icon-home`}></use>
-                    </svg>Read</button>
-                    <div className='search__box__wrapper'>
-                        <div className='search__button_div'>
-                            <svg className="search__button">
-                                        <use xlinkHref={`${Icon}#icon-search`}></use>
-                                </svg>
-                        </div>
-                        <input className='search__box' type='search' placeholder='Search...' />
-                    </div>
+                    </svg>add </button>
+                   <SearchBox /> 
             </div>
+
             <div className='select__profile__wrapper'>
-                <div className='select__profile__user'>
-                    <img className='select__profile__user-photo' src={profile} alt='profile' />
-                    <p className='select__profile__user-name'>default</p>
-                </div>
+                <Profile profile={profile} name='default' isDisplay={false} />
+                <Profile profile={profile} name='Isita' isDisplay={false} />
             </div>
         </div>
     );

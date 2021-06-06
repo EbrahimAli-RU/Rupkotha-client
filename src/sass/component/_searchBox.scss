@@ -1,0 +1,35 @@
+.search__box__wrapper {
+    border: 2px solid var(--color-Grey-dark-1);
+    border-radius: 4px;
+    width: 60%;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    
+}
+.search__button_div {
+    flex: 0 0 10%;
+    line-height: 0;
+}
+
+.search__button {
+    z-index: 10;
+    width: 2rem;
+    height: 2rem;
+    line-height: 0;
+    margin-left: 1.4rem;
+    fill: var(--color-Grey-dark-1) ;
+}
+
+.search__box {
+    border: none;
+    outline: none;
+    flex: 1;
+    color: var(--color-Grey-dark-1);
+    padding: 1.7rem .5rem ;
+    font-size: 1.6rem;
+
+    &::placeholder {
+        font-size: 1.8rem;
+    }
+}

@@ -8,6 +8,7 @@
 @import 'base/reset';
 
 //COMPONENT
+@import 'component/searchBox';
 @import 'component/dropDown';
 @import 'component/authInput';
 @import 'component/button/button';
@@ -15,6 +16,7 @@
 @import 'component/bookCard';
 @import 'component/profile/profileImage';
 @import 'component/profile/profileTitle';
+@import 'component/profile/profile';
 
 //LAYOUT
 @import 'layout/navigation';

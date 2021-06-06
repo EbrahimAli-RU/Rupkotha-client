@@ -6,7 +6,7 @@ import interest1 from '../../assets/img/interest1.png'
 const ProfileInterest = () => {
     return (
         <>
-            <ProfileTitle />
+            <ProfileTitle title='Interests' />
             <div className='profile__interest__wrapper'>
                 <div className='profile__interest__content'>
                     <h2>Choose Your Interests</h2>
@@ -42,7 +42,7 @@ const ProfileInterest = () => {
                         </div>
                     </div>
                     
-                    <div style={{width: '36rem'}}>
+                    <div style={{width: '36rem', display:'flex', justifyContent: 'center'}}>
                         <Button text='Continue' />
                     </div>
                     <a className='cancel__button display' href='/'>Cancel</a>
