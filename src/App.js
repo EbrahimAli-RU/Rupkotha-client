@@ -6,6 +6,7 @@ import Signup from './container/auth/Signup';
 import Main from './container/home/Main'
 import CreateProfile from './container/profile/CreateProfile';
 import EditProfile from './container/profile/EditProfile';
+import EditSingleProfile from './container/profile/EditSingleProfile';
 import ProfileInterest from './container/profile/ProfileInterest';
 import SelectNewProfileImg from './container/profile/SelectNewProfileImg';
 import SelectProfile from './container/profile/SelectProfile';
@@ -20,6 +21,7 @@ function App() {
       <Switch>
         <Route path='/profile/create' component={CreateProfile} />
         <Route path='/profile/edit' component={EditProfile} />
+        <Route path='/profile/id/edit' component={EditSingleProfile} />
         <Route path='/profile/interest' component={ProfileInterest} />
         <Route path='/profile/new' component={SelectNewProfileImg}/>
         <Route path='/home' component={Main} />

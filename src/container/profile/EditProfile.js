@@ -10,12 +10,12 @@ const EditProfile = () => {
         <div className='select__profile__container width80'>
             <h1 className='select__profile__title marginBottom-big'>Edit Profile</h1>
             <div className='select__profile__btn-search marginBottom-extralarge'>
-                   <SearchBox />
+                <SearchBox />
             </div>
             <div className='select__profile__wrapper width60'>
-                <Profile profile={profile} name='default' isDisplay={true} />
-                <Profile profile={profile1} name='Isita' isDisplay={true} />
-                <Profile profile={profile2} name='Isita' isDisplay={true} />
+                <Profile link='/profile/id/edit' profile={profile} name='default' isDisplay={true} />
+                <Profile link='/profile/id/edit' profile={profile1} name='Isita' isDisplay={true} />
+                <Profile link='/profile/id/edit' profile={profile2} name='Isita' isDisplay={true} />
             </div>
         </div>
     );

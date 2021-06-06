@@ -1,0 +1,16 @@
+.second__input {
+    width: 80%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    &-title {
+        margin-left: 1rem;
+    }
+
+    &__interest {
+        font-size: 1.2rem;
+        padding-bottom: 2px;
+    }
+}

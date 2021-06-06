@@ -14,9 +14,9 @@ const ProfileImage = (props) => {
                 <div key={i+1} className='one__category__profile__imgs'>
                     <p className='one__category__profile__imgs__title'>{el}</p>
                     <img onClick={selectProfilePicHandler} className='one__category__profile__img' src={profile} alt='new profile' />
-                    <img className='one__category__profile__img' src={profile} alt='new profile' />
-                    <img className='one__category__profile__img' src={profile} alt='new profile' />
-                    <img className='one__category__profile__img' src={profile} alt='new profile' />
+                    <img onClick={selectProfilePicHandler} className='one__category__profile__img' src={profile} alt='new profile' />
+                    <img onClick={selectProfilePicHandler} className='one__category__profile__img' src={profile} alt='new profile' />
+                    <img onClick={selectProfilePicHandler} className='one__category__profile__img' src={profile} alt='new profile' />
             </div>
             ))}
         </>

@@ -7,12 +7,14 @@ const Profile = (props) => {
             <div className='profile__user'>
                 <div className='profile__user__photo__container'>
                     <img className='profile__user-photo' src={props.profile} alt='profile' />
-                    {props.isDisplay ? 
-                        <div className='profile__user__edit-button__div'>
-                            <svg className='profile__user__edit-button' >
-                                <use xlinkHref={`${Icon}#icon-home`}></use>
-                            </svg>
-                        </div> : null }
+                    {props.isDisplay ?
+                        <a href={props.link}>
+                            <div className='profile__user__edit-button__div'>
+                                <svg className='profile__user__edit-button' >
+                                    <use xlinkHref={`${Icon}#icon-home`}></use>
+                                </svg>
+                            </div>
+                        </a> : null }
                 </div>
                 <p className='select__profile__user-name'>{props.name}</p>
             </div>
