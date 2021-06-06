@@ -5,7 +5,7 @@ import Profile from '../../component/profileTitle/Profile';
 import SearchBox from '../../component/searchBox/SearchBox';
 const SelectProfile = () => {
     return (
-        <div className='select__profile__container'>
+        <div className='select__profile__container width60'>
             <h1 className='select__profile__title'>Who is Watching?</h1>
             <div className='select__profile__btn-search'>
                 <button className='btn btn-read'> 
@@ -15,7 +15,7 @@ const SelectProfile = () => {
                    <SearchBox /> 
             </div>
 
-            <div className='select__profile__wrapper'>
+            <div className='select__profile__wrapper width80'>
                 <Profile profile={profile} name='default' isDisplay={false} />
                 <Profile profile={profile} name='Isita' isDisplay={false} />
             </div>

@@ -1,6 +1,5 @@
 .select__profile {
     &__container {
-        width: 60%;
         @include center-element(40%);
     }
 
@@ -18,7 +17,6 @@
     }
   
     &__wrapper {
-        width: 80%;
         margin: auto;
     }
 }

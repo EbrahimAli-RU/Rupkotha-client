@@ -10,7 +10,7 @@ const Dropdown = () => {
                     <p>Isita</p>
                 </div>
                 <button className='dropdown-content-button'><a href="/select/profile">Change Profile</a></button>
-                <a className='dropdown-content__link' href="/">Edit Profile</a>
+                <a className='dropdown-content__link' href="/profile/edit">Edit Profile</a>
                 <a className='dropdown-content__link' href="/">Account</a>
                 <a className='dropdown-content__link' href="/">Resources</a>
                 <a className='dropdown-content__link' href="/">Billing</a>
