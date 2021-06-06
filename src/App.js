@@ -10,6 +10,7 @@ import EditSingleProfile from './container/profile/EditSingleProfile';
 import ProfileInterest from './container/profile/ProfileInterest';
 import SelectNewProfileImg from './container/profile/SelectNewProfileImg';
 import SelectProfile from './container/profile/SelectProfile';
+import SearchBook from './container/searchBook/SearchBook';
 import Navigation from './layout/Navigation';
 
 import './sass/main.scss'
@@ -26,6 +27,7 @@ function App() {
         <Route path='/profile/new' component={SelectNewProfileImg}/>
         <Route path='/home' component={Main} />
         <Route path='/select/profile' component={SelectProfile} />
+        <Route path='/search' component={SearchBook} />
         <Route path='/register' component={Signup} />
         <Route path='/forgot-password' component={ForgotPassword} />
         <Route path='/' component={Signin} />

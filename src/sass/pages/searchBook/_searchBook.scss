@@ -1,0 +1,33 @@
+.search__book {
+    &__wrapper {
+        margin-top: 7rem;
+        height: 100vh;
+        background-color: #f9fafd;
+    }
+    &__content {
+        width: 80%;
+        margin: auto;
+    }
+    &__recent-searchs {
+        margin-top: 3rem;
+    }
+    &__recent-search-title {
+        font-size: 2rem;
+        color: $color-black;
+        background-color: paleturquoise;
+        display: inline-block;
+        border-radius: 10rem;
+        padding: 1rem 4rem;
+        margin-right: 1rem;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        transition: all .2s ease-out;
+
+        &:hover {
+            background-color: darken($color: paleturquoise, $amount: 20%);
+        }
+    }
+    &__title__wrapper {
+        margin-top: 2rem;
+    }
+}
