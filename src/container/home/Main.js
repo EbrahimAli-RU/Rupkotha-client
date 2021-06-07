@@ -21,7 +21,7 @@ const main = () => {
                     <p>Recent Added</p>
                     <a href='/'>View More</a>
                 </div>
-                <div className='bookCard__container'>
+                <div className='bookCard'>
                     <BookCard width='25' />
                     <BookCard width='25' />
                     <BookCard width='25' />

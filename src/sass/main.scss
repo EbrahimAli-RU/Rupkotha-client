@@ -8,6 +8,7 @@
 @import 'base/reset';
 
 //COMPONENT
+@import 'component/homePageCarosul';
 @import 'component/searchBox';
 @import 'component/secondInput';
 @import 'component/dropDown';
@@ -32,3 +33,4 @@
 @import 'pages/profile/createProfile';
 @import 'pages/profile/profileInterest';
 @import 'pages/searchBook/searchBook';
+@import 'pages/bookDetail/bookDetail';

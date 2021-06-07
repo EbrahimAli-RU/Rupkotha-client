@@ -1,9 +1,6 @@
 import React from 'react';
 import Book1 from '../../assets/img/book/1.png'
 import Icon from '../../assets/img/sprite.svg'
-import Book2 from '../../assets/img/book/2.png'
-import Book3 from '../../assets/img/book/3.png'
-import Book4 from '../../assets/img/book/4.png'
 
 const BookCard = (props) => {
     return (
