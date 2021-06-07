@@ -1,6 +1,36 @@
 //UTILS
+@import 'utils/function';
+@import 'utils/mixin';
 @import 'utils/utiliti';
 @import 'utils/variable';
-@import 'utils/mixin';
 
+//BASE
 @import 'base/reset';
+
+//COMPONENT
+@import 'component/homePageCarosul';
+@import 'component/searchBox';
+@import 'component/secondInput';
+@import 'component/dropDown';
+@import 'component/authInput';
+@import 'component/button/button';
+@import 'component/button/cancelbutton';
+@import 'component/bookCard';
+@import 'component/profile/profileImage';
+@import 'component/profile/profileTitle';
+@import 'component/profile/profile';
+
+//LAYOUT
+@import 'layout/navigation';
+
+//PAGES
+@import 'pages/wishlist';
+@import 'pages/bookDetail';
+@import 'pages/selectProfile';
+@import 'pages/auth/signin';
+@import 'pages/home/home';
+@import 'pages/profile/selectNewProfileImg';
+@import 'pages/profile/createProfile';
+@import 'pages/profile/profileInterest';
+@import 'pages/searchBook/searchBook';
+@import 'pages/bookDetail/bookDetail';

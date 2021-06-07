@@ -1,0 +1,28 @@
+.btn {
+    margin: 3rem 0;
+    border: none;
+    outline: none;
+    background-color: var(--color-Primary);
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    border-radius: 10rem;
+    font-weight: 400;
+    width: 80%;
+    font-size: 1.6rem;
+    color: $color-white;
+    padding: 1.6rem 0;
+    cursor: pointer;
+    transition: all .3s ease-out;
+
+    &:hover {
+        background-color: var(--color-Primary-dark);
+    }
+}
+
+.btn-read {
+    padding: 1.4rem 0;
+    width: 15rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+}

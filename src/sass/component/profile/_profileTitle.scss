@@ -1,0 +1,15 @@
+.select__new__profile__img {
+    &-title__wrapper {
+        margin-top: 8rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-title {
+        margin-left: 2rem;
+    }
+}
+
+.skip {
+    margin-right: 4rem;
+}

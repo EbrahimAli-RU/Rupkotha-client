@@ -1,0 +1,22 @@
+.select__profile {
+    &__container {
+        @include center-element(40%);
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 4.2rem;
+        font-style: italic;
+        color: $color-black;
+    }
+
+    &__btn-search {
+        justify-content: space-around;
+        display: flex;
+        align-items: center;
+    }
+  
+    &__wrapper {
+        margin: auto;
+    }
+}

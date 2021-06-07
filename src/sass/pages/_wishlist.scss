@@ -1,0 +1,16 @@
+.wishlist__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    &__title {
+        text-align: center;
+        font-size: 5rem;
+        color: $color-black;
+    }
+}
+
+.wishlist__content {
+    width: 80%;
+}

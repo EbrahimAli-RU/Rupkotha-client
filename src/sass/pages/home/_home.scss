@@ -1,0 +1,56 @@
+.main {
+    &__books {
+        margin: 6rem 0;
+
+        &__category {
+            display: flex;
+            justify-content: space-between;
+            
+            p {
+                font-size: 2.2rem;
+                font-family: 'Open Sans';
+                font-weight: 600;
+                margin-left: 2rem;
+            }
+
+            a:link,
+            a:visited {
+                font-family: 'Open Sans';
+                font-weight: 400;
+                margin-right: 2rem;
+                transition: all .2s;
+            }
+            a:hover {
+                transform: translateY(-2px);
+                color: var(--color-primary-dark-1);
+            }
+        }
+    }
+    
+}
+.owl-carousel .owl-nav button.owl-prev, 
+.owl-carousel .owl-nav button.owl-next {
+    background-color: transparent;
+    &:hover {
+        background-color: transparent;
+        color: black;
+    }
+}
+.owl-prev, .owl-next {
+    width: 5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    span {
+        font-size: 6rem;
+    }
+}
+
+.owl-prev {
+    left: 2rem;
+}
+
+.owl-next {
+    right: 2rem;
+}
