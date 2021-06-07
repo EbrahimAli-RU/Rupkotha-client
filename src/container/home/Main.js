@@ -21,14 +21,25 @@ const main = () => {
                     <p>Recent Added</p>
                     <a href='/'>View More</a>
                 </div>
-                <BookCard />
+                <div className='bookCard__container'>
+                    <BookCard width='25' />
+                    <BookCard width='25' />
+                    <BookCard width='25' />
+                    <BookCard width='25' />
+                </div>
             </div>
             <div className='main__books'>
                 <div className='main__books__category'>
                     <p>Most Popular</p>
                     <a href='/'>View More</a>
                 </div>
-                <BookCard />
+                <div className='bookCard'>
+                    <BookCard width='25' />
+                    <BookCard width='25' />
+                    <BookCard width='25' />
+                    <BookCard width='25' />
+                </div>
+                
             </div>
         </>
     );

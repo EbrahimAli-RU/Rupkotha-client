@@ -1,7 +1,8 @@
 .bookCard {
     &__wrapper {
+        // background-color: brown;
+        position: relative;
         display: inline-block;
-        width: 25%;
         transform: scale(1);
         transition: all .2s ease-out;
         cursor: pointer;

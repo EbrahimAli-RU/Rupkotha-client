@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import ForgotPassword from './container/auth/ForgotPassword';
 import Signin from './container/auth/Signin';
 import Signup from './container/auth/Signup';
+import BookDetail from './container/bookDetail/BookDetail';
 import Main from './container/home/Main'
 import CreateProfile from './container/profile/CreateProfile';
 import EditProfile from './container/profile/EditProfile';
@@ -11,6 +12,7 @@ import ProfileInterest from './container/profile/ProfileInterest';
 import SelectNewProfileImg from './container/profile/SelectNewProfileImg';
 import SelectProfile from './container/profile/SelectProfile';
 import SearchBook from './container/searchBook/SearchBook';
+import Wishlist from './container/wishList/Wishlist';
 import Navigation from './layout/Navigation';
 
 import './sass/main.scss'
@@ -20,6 +22,8 @@ function App() {
     <>
       <Navigation />
       <Switch>
+        <Route path='/wishlist' component={Wishlist} />
+        <Route path='/bookdetail' component={BookDetail} />
         <Route path='/profile/create' component={CreateProfile} />
         <Route path='/profile/edit' component={EditProfile} />
         <Route path='/profile/id/edit' component={EditSingleProfile} />
