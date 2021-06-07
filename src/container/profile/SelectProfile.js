@@ -8,10 +8,12 @@ const SelectProfile = () => {
         <div className='select__profile__container width60'>
             <h1 className='select__profile__title'>Who is Watching?</h1>
             <div className='select__profile__btn-search'>
-                <button className='btn btn-read'> 
-                    <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
-                            <use xlinkHref={`${Icon}#icon-home`}></use>
-                    </svg>add </button>
+               <a href='/profile/new'>
+                    <button className='btn btn-read'> 
+                        <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
+                                <use xlinkHref={`${Icon}#icon-home`}></use>
+                        </svg>add </button>
+                </a>
                    <SearchBox /> 
             </div>
 

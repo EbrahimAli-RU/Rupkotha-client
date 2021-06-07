@@ -18,16 +18,22 @@
         background-position: center;
         background-size: cover;
         height: 60vh;
+        // &__image {
+        //     width: 30rem !important;
+        //     margin-right: 20rem;
+        //     margin-bottom: -9rem;
+        //     margin-top: 9rem;
+        // }
 
         &__content {
             display: flex;
             justify-content: space-between;
 
             img {
-                width: 30rem;
+                width: 30rem !important;
                 margin-right: 20rem;
-                margin-bottom: -9rem;
-                margin-top: 9rem;
+                margin-bottom: -7rem;
+                margin-top: 7rem;
             }
         }
 
@@ -77,4 +83,30 @@
         }
     }
     
+}
+.owl-carousel .owl-nav button.owl-prev, 
+.owl-carousel .owl-nav button.owl-next {
+    background-color: transparent;
+    &:hover {
+        background-color: transparent;
+        color: black;
+    }
+}
+.owl-prev, .owl-next {
+    width: 5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    span {
+        font-size: 6rem;
+    }
+}
+
+.owl-prev {
+    left: 2rem;
+}
+
+.owl-next {
+    right: 2rem;
 }

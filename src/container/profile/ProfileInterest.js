@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '../../component/button/Button';
 import ProfileTitle from '../../component/profileTitle/ProfileTitle';
 import interest1 from '../../assets/img/interest1.png'
+import ButtonLink from '../../component/button/ButtonLink';
 
 const ProfileInterest = () => {
     return (
@@ -43,7 +43,7 @@ const ProfileInterest = () => {
                     </div>
                     
                     <div style={{width: '36rem', display:'flex', justifyContent: 'center'}}>
-                        <Button text='Continue' />
+                        <ButtonLink text='Continue' link='/select/profile' />
                     </div>
                     <a className='cancel__button display' href='/'>Cancel</a>
                 </div>
