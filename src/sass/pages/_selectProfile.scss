@@ -1,6 +1,7 @@
 .select__profile {
     &__container {
-        @include center-element(40%);
+        @include center-element(50%);
+        min-height: 60vh;
     }
 
     &__title {
