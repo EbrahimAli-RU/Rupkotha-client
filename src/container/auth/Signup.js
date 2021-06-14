@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import photo from '../../assets/img/rupkotha.png'
 import AuthInput from '../../component/authInput/AuthInput';
 import Button from '../../component/button/Button';
+import Error from '../../component/Error';
+import Spinner from '../../component/Spinner';
 
 const signupObj = {
     userName: '',
@@ -12,8 +14,15 @@ const signupObj = {
     confirmPassword: ''
 }
 
+const errorObj = {
+    error: false,
+    message: ''
+}
+
 const Signup = (props) => {
     const [signupData, setSignupData] = useState(signupObj);
+    const [isShow, setIsShow] = useState(errorObj)
+    const [showSpinner, setShowSpinner] = useState(false)
 
     const inputHandler = e => {
         const {name, value} = e.target;
@@ -24,7 +33,7 @@ const Signup = (props) => {
     }
 
     const signupHandler = () => {
-        console.log('CLICKED');
+        setShowSpinner(true)
         axios.post('http://localhost:8000/api/v1/user/register', {
             userName: signupData.userName,
             email: signupData.email,
@@ -32,14 +41,23 @@ const Signup = (props) => {
             confirmPassword: signupData.confirmPassword
         }).then(res => {
             props.history.push('/select/profile')
-            // alert('Success');
+            setShowSpinner(false)
         }).catch(err => {
-            alert(err.response)
+            setIsShow({error: true, message: err.response.data.message})
+            setShowSpinner(false)
+            setTimeout(() => {
+                vanisErrorHandler()
+            }, 500)
         })
+    }
+    const vanisErrorHandler = () => {
+        setIsShow({error: false, message: ''})
     }
 
     return (
         <div className='auth__wrapper signup'> 
+            <Spinner show={showSpinner} />
+            <Error show={isShow.error} message={isShow.message} />
             <div className='auth__container'>
                 <div className='auth__logo'>
                     <img src={photo} alt='logo' />
