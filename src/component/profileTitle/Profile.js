@@ -23,3 +23,5 @@ const Profile = (props) => {
 };
 
 export default Profile;
+
+//props.name.length > 8 ? `${props.name.substr(0, 8)}...`: `${props.name}`

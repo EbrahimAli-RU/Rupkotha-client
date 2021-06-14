@@ -4,6 +4,7 @@
     &__custom-field {
         position: relative;
         font-size: 1.4rem;
+        width: 100%;
         input {
             font-family: 'Roboto', sans-serif;
             border: none;
@@ -23,7 +24,7 @@
             &:valid  + .auth__input__placeholder,
             &:focus + .auth__input__placeholder {
                 background-color: $color-white;
-                top: -1.2rem;
+                top: -.0rem;
                 font-size: 1rem;
                 color: var(--color-Grey-dark-2);
                 padding: .5rem;
