@@ -15,8 +15,10 @@ const ProfileInterest = (props) => {
     const [interests, setInterest] = useState([])
 
     useEffect(() => {
-        const userInterest = ['Superheroe']
+        let userInterest = props.location.search.split('=')[1]
+        userInterest = userInterest.split('+') 
         axios.get('http://localhost:8000/api/v1/interest').then(res => {
+            
             const interests =  res.data.data.interest.map(el => { 
                 return { 
                     inter: {
@@ -29,7 +31,7 @@ const ProfileInterest = (props) => {
         }).catch(err => {
             console.log(err.response)
         })
-    }, [])
+    }, [props.location.search])
     
     const interestHandler = (id, name) => {
         let interCopy = [...interests];

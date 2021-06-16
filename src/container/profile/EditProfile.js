@@ -4,13 +4,18 @@ import Profile from '../../component/profileTitle/Profile';
 import SearchBox from '../../component/searchBox/SearchBox';
 import Spinner from '../../component/Spinner';
 import Navigation from '../../layout/Navigation';
+// import Cookies from 'universal-cookie';
+import cookie from 'react-cookie'
 
-const EditProfile = () => {
+const EditProfile = (props) => {
     const [childs, setChilds] = useState([])
     const [searchItem, setSearchItem] = useState('')
     const [filterChild, setFilterChild] = useState([]);
-
+    
+//Object.entries({}).length === 0
     useEffect(() => {
+        console.log(props)
+        console.log(document.cookie)
         axios.get('/user/60c94e444616bd09fcd30200').then(res => {
             setChilds(res.data.users.children)
             console.log(res.data.users.children)
