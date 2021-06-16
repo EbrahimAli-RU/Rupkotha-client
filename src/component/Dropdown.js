@@ -1,5 +1,5 @@
 import React, {useState ,useEffect} from 'react';
-import profile from '../assets/img/profile.png'
+
 const Dropdown = () => {
     const [currentProfile, setcurrentProfile] = useState({})
     useEffect(() => {

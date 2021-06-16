@@ -28,7 +28,7 @@ function App() {
         <Route path='/bookdetail' component={BookDetail} />
         <Route path='/profile/create' component={CreateProfile} />
         <Route path='/profile/edit' component={EditProfile} />
-        <Route path='/profile/id/edit' component={EditSingleProfile} />
+        <Route path='/profile/:id/edit' component={EditSingleProfile} />
         <Route path='/profile/interest' component={ProfileInterest} />
         <Route path='/profile/new' component={SelectNewProfileImg}/>
         <Route path='/home' component={Main} />

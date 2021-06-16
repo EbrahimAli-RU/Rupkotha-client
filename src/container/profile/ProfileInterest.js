@@ -6,6 +6,8 @@ import ProfileTitle from '../../component/profileTitle/ProfileTitle';
 import Button from '../../component/button/Button';
 import InterestCard from '../../component/profileTitle/InterestCard';
 import * as action from '../../redux/action/index'
+import Spinner from '../../component/Spinner';
+import Navigation from '../../layout/Navigation';
 
 const ProfileInterest = (props) => {
     const profile = useSelector(state => state.profile)
@@ -13,8 +15,16 @@ const ProfileInterest = (props) => {
     const [interests, setInterest] = useState([])
 
     useEffect(() => {
+        const userInterest = ['Superheroe']
         axios.get('http://localhost:8000/api/v1/interest').then(res => {
-            const interests =  res.data.data.interest.map(el => { return { inter: {...el, selected: false} }})
+            const interests =  res.data.data.interest.map(el => { 
+                return { 
+                    inter: {
+                        ...el, 
+                        selected: userInterest.includes(el.title)
+                    } 
+                }
+            })
              setInterest(interests)
         }).catch(err => {
             console.log(err.response)
@@ -34,7 +44,6 @@ const ProfileInterest = (props) => {
         const addInterestCopy =profileCopy.interest
         let index = addInterestCopy.indexOf(name)
         index === -1 ? addInterestCopy.push(name) : addInterestCopy.splice(index, index + 1)
-      console.log(addInterestCopy)
         dispatch(action.interestHandler(addInterestCopy))
     }
 
@@ -50,28 +59,31 @@ const ProfileInterest = (props) => {
     }
     return (
         <>
+            {interests.length === 0 ? <Spinner show /> :
+            <>
+            <Navigation />
             <ProfileTitle title='Interests' />
             <div className='profile__interest__wrapper'>
-                <div className='profile__interest__content'>
-                    <h2>Choose Your Interests</h2>
-                    <p>Get personalized recomendations</p>
-                    <div className='profile__interest__topic__wrapper'>
-                        {interests.map(el => 
-                            <InterestCard
-                                key={el.inter._id}
-                                isSelected={el.inter.selected}
-                                handler={interestHandler} 
-                                id={el.inter._id} 
-                                photo={el.inter.photo}
-                                name={el.inter.title} />)}
-                    </div>
-                    
-                    <div style={{width: '36rem', display:'flex', justifyContent: 'center'}}>
-                        <Button text='Continue' handler={createProfileHandler} />
-                    </div>
-                    <a className='cancel__button display' href='/'>Cancel</a>
+            <div className='profile__interest__content'>
+                <h2>Choose Your Interests</h2>
+                <p>Get personalized recomendations</p>
+                <div className='profile__interest__topic__wrapper'>
+                    {interests.map(el => 
+                        <InterestCard
+                            key={el.inter._id}
+                            isSelected={el.inter.selected}
+                            handler={interestHandler} 
+                            id={el.inter._id} 
+                            photo={el.inter.photo}
+                            name={el.inter.title} />)}
                 </div>
+                
+                <div style={{width: '36rem', display:'flex', justifyContent: 'center'}}>
+                    <Button text='Continue' handler={createProfileHandler} />
+                </div>
+                <a className='cancel__button display' href='/'>Cancel</a>
             </div>
+        </div></>}
         </>
     );
 };
