@@ -4,10 +4,12 @@ import HomePageCarosul from '../../component/homePagecarosul/HomePageCarosul'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import Navigation from '../../layout/Navigation';
 
 const main = () => {
     return (
         <>
+        <Navigation />
             <OwlCarousel items={1}
                 className="owl-theme"
                  nav center loop={true} dots={false} autoplay={true} autoplayTimeout={3000} autoplayHoverPause={true}>

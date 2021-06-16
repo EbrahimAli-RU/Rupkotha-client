@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Switch>
         <Route path='/read' component={ReadBook} />
         <Route path='/wishlist' component={Wishlist} />

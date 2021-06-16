@@ -1,19 +1,20 @@
 import React, {useState, useEffect } from 'react';
+import { withRouter} from 'react-router'
 import axios from '../../utils/axios/axios'
-import profile from '../../assets/img/profile.png'
 import Icon from '../../assets/img/sprite.svg'
 import Profile from '../../component/profileTitle/Profile';
 import SearchBox from '../../component/searchBox/SearchBox';
 import Spinner from '../../component/Spinner'
+import Navigation from '../../layout/Navigation';
 
 
-const SelectProfile = () => {
+const SelectProfile = (props) => {
     const [childs, setChilds] = useState([])
     const [searchItem, setSearchItem] = useState('')
     const [filterChild, setFilterChild] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/v1/user/60c94e444616bd09fcd30200').then(res => {
+        axios.get('/user/60c94e444616bd09fcd30200').then(res => {
             setChilds(res.data.users.children)
             console.log(res.data.users.children)
         }).catch(err => {
@@ -25,8 +26,15 @@ const SelectProfile = () => {
         const filter = childs.filter(el => el.name === e.target.value)
         setFilterChild(filter)
     }
+
+    const selectHandler = (id) => {
+        const matchedProfile = childs.find(el => el._id === id)
+        localStorage.setItem('currentProfile', JSON.stringify(matchedProfile))
+        props.history.push('/home')
+    }
     return (
         <>
+        <Navigation />
         {childs.length === 0 ? <Spinner show /> :
         <div className='select__profile__container width60'>
             <h1 className='select__profile__title'>Who is Watching?</h1>
@@ -42,9 +50,9 @@ const SelectProfile = () => {
 
             <div className='select__profile__wrapper width80'>
                 {searchItem.length === 0 ? <> 
-                    {childs.map(child => <Profile key={child._id} profile={child.photo} name={child.name} isDisplay={false} />)}
+                    {childs.map(child => <Profile handler={selectHandler} key={child._id} id={child._id} profile={child.photo} name={child.name} isDisplay={false} />)}
                 </>: <>
-                {filterChild.map(child => <Profile key={child._id} profile={profile} name={child.name} isDisplay={false} />)}
+                {filterChild.map(child => <Profile handler={selectHandler} key={child._id} id={child._id} profile={child.photo} name={child.name} isDisplay={false} />)}
                 </>}
                 
             </div>
@@ -53,4 +61,4 @@ const SelectProfile = () => {
     );
 };
 
-export default SelectProfile;
+export default withRouter(SelectProfile);

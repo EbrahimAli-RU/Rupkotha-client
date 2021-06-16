@@ -19,7 +19,6 @@ const ProfileInterest = (props) => {
         }).catch(err => {
             console.log(err.response)
         })
-        
     }, [])
     
     const interestHandler = (id, name) => {
@@ -48,7 +47,6 @@ const ProfileInterest = (props) => {
         }).catch(err => {
             console.log(err.response)
         })
-        // console.log(profileData)
     }
     return (
         <>
@@ -59,7 +57,7 @@ const ProfileInterest = (props) => {
                     <p>Get personalized recomendations</p>
                     <div className='profile__interest__topic__wrapper'>
                         {interests.map(el => 
-                            <InterestCard 
+                            <InterestCard
                                 key={el.inter._id}
                                 isSelected={el.inter.selected}
                                 handler={interestHandler} 

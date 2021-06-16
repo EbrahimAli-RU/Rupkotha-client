@@ -34,3 +34,10 @@ export const interestHandler = (interest) => {
         interest
     }
 }
+
+// export const currentProfileHandler = () => {
+//     const currentProfile = JSON.parse(localStorage.getItem('currentProfile'))
+//     return {
+//         type: actionType.CURRENT_USER,
+//     }
+// }
