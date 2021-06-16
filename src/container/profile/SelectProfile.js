@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from '../../utils/axios/axios'
 import profile from '../../assets/img/profile.png'
 import Icon from '../../assets/img/sprite.svg'
 import Profile from '../../component/profileTitle/Profile';
@@ -13,7 +13,7 @@ const SelectProfile = () => {
     const [filterChild, setFilterChild] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/v1/user/60c71ccee820ac18f425c090').then(res => {
+        axios.get('http://localhost:8000/api/v1/user/60c94e444616bd09fcd30200').then(res => {
             setChilds(res.data.users.children)
             console.log(res.data.users.children)
         }).catch(err => {
@@ -42,7 +42,7 @@ const SelectProfile = () => {
 
             <div className='select__profile__wrapper width80'>
                 {searchItem.length === 0 ? <> 
-                    {childs.map(child => <Profile key={child._id} profile={profile} name={child.name} isDisplay={false} />)}
+                    {childs.map(child => <Profile key={child._id} profile={child.photo} name={child.name} isDisplay={false} />)}
                 </>: <>
                 {filterChild.map(child => <Profile key={child._id} profile={profile} name={child.name} isDisplay={false} />)}
                 </>}

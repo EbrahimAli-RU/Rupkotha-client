@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios'
+import axios from '../../utils/axios/axios'
 import { withRouter } from 'react-router-dom'
 import photo from '../../assets/img/rupkotha.png'
 import AuthInput from '../../component/authInput/AuthInput';
@@ -34,7 +34,7 @@ const Signup = (props) => {
 
     const signupHandler = () => {
         setShowSpinner(true)
-        axios.post('http://localhost:8000/api/v1/user/register', {
+        axios.post('/user/register', {
             userName: signupData.userName,
             email: signupData.email,
             password: signupData.password,
@@ -43,6 +43,7 @@ const Signup = (props) => {
             props.history.push('/select/profile')
             setShowSpinner(false)
         }).catch(err => {
+            console.log(err.response)
             setIsShow({error: true, message: err.response.data.message})
             setShowSpinner(false)
             setTimeout(() => {

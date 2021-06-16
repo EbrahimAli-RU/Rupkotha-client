@@ -1,19 +1,13 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom'
 
 const ProfileImage = (props) => {
 
-    const selectProfilePicHandler = () => {
-        props.history.push('/profile/create')
-    }
-console.log(props.profiles.photos[0])
     return (
         <>
-
             <div className='one__category__profile__imgs'>
                     <p className='one__category__profile__imgs__title'>{props.profiles.title}</p>
                     {props.profiles.photos.map(el => 
-                        <img onClick={selectProfilePicHandler} 
+                        <img onClick={() => props.handler(el)} 
                              className='one__category__profile__img' 
                              key={el} 
                              src={`http://localhost:8000/${el}`} 
@@ -23,4 +17,4 @@ console.log(props.profiles.photos[0])
     );
 };
 
-export default withRouter(ProfileImage);
+export default ProfileImage;

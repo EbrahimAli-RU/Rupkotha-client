@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import profile from '../../assets/img/profile.png'
 import AuthInput from '../../component/authInput/AuthInput';
 import { withRouter } from 'react-router-dom'
 import Profile from '../../component/profileTitle/Profile';
@@ -18,7 +17,7 @@ const CreateProfile = () => {
         <div className='create__profile__wrapper'>
             <div className='create__profile__content'>
             <h2>Create Profile</h2>
-            <Profile profile={profile} isDisplay={false} />
+            <Profile profile={profileState.photo} isDisplay={false} />
             <AuthInput placeholder='Name' name='name' type='text' handler={nameHandler} valueof={profileState.name} />
             <AuthInput placeholder='Age' name='age' type='number' handler={ageHandler} valueof={profileState.age}/>
             <AuthInput placeholder='Language' name='language' type='text' handler={languageHandler} valueof={profileState.language}/>

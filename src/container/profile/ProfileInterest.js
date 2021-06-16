@@ -1,13 +1,14 @@
 import React, {useState, useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux'
-import axios from 'axios'
+import { withRouter } from 'react-router'
+import axios from '../../utils/axios/axios'
 import ProfileTitle from '../../component/profileTitle/ProfileTitle';
 import Button from '../../component/button/Button';
 import InterestCard from '../../component/profileTitle/InterestCard';
 import * as action from '../../redux/action/index'
 
-const ProfileInterest = () => {
-    const addInterest = useSelector(state => state.profile.interest)
+const ProfileInterest = (props) => {
+    const profile = useSelector(state => state.profile)
     const dispatch = useDispatch();
     const [interests, setInterest] = useState([])
 
@@ -30,7 +31,8 @@ const ProfileInterest = () => {
                 inte.inter.selected=false
             }
         })
-        const addInterestCopy = [...addInterest]
+        const profileCopy = {...profile}
+        const addInterestCopy =profileCopy.interest
         let index = addInterestCopy.indexOf(name)
         index === -1 ? addInterestCopy.push(name) : addInterestCopy.splice(index, index + 1)
       console.log(addInterestCopy)
@@ -38,6 +40,14 @@ const ProfileInterest = () => {
     }
 
     const createProfileHandler = () => {
+        axios.post('/child/add-child', {
+            ...profile
+        }).then(res => {
+            console.log(res.data)
+            props.history.push('/select/profile')
+        }).catch(err => {
+            console.log(err.response)
+        })
         // console.log(profileData)
     }
     return (
@@ -68,4 +78,4 @@ const ProfileInterest = () => {
     );
 };
 
-export default ProfileInterest;
+export default withRouter(ProfileInterest);
