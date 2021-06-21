@@ -1,10 +1,12 @@
 import React from 'react';
 import Icon from '../../assets/img/sprite.svg'
 import Book from '../../assets/img/little.png'
+import backgroundImg from '../../assets/img/2.jpg'
 
 const HomePageCarosul = () => {
     return (
         <div className='main__carosoul'>
+                <img src={backgroundImg} alt='background image' className='main__carosoul__background-img' />
                 <div className='main__carosoul__content'>
                     <div className='main__carosoul__left__div'>
                         <h1>Little Socks Makes a Friend</h1>
