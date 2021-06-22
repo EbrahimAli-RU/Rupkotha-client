@@ -1,10 +1,11 @@
 .profile__interest {
     &__wrapper {
-        margin-top: 5rem;
-        @include center-element(50%);
+        margin-top: 30rem;
+        @include center-element(20%);
+        min-height: 60vh;
     }
     &__content {
-        width: 64vw;
+        width: 80vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -43,4 +44,8 @@
         justify-content: center;
         flex-wrap: wrap;
     }
+}
+
+.profile__interest__selected {
+    background-color: var(--color-Grey-light-3);
 }

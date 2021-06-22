@@ -1,18 +1,18 @@
 .bookCard {
     &__wrapper {
-        // background-color: brown;
         position: relative;
         display: inline-block;
         transform: scale(1);
         transition: all .2s ease-out;
         cursor: pointer;
+        margin: 1rem 0;
         &__img {
-            width: 100%;
+            border-radius: 2rem;
+            width: 96%;
         }
-
         &:hover {
-            transform: scale(1.05);
-        }
+                transform: scale(1.05);
+            }
     }
 
     &:hover &__wrapper:not(:hover) {

@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 //UTILS
 @import 'utils/function';
 @import 'utils/mixin';
@@ -8,6 +9,9 @@
 @import 'base/reset';
 
 //COMPONENT
+@import 'component/spinner/spinner';
+@import 'component/spinner';
+@import 'component/error';
 @import 'component/homePageCarosul';
 @import 'component/searchBox';
 @import 'component/secondInput';
@@ -24,6 +28,8 @@
 @import 'layout/navigation';
 
 //PAGES
+@import 'pages/viewMore/viewMore';
+@import 'pages/readbook/readBook';
 @import 'pages/wishlist';
 @import 'pages/bookDetail';
 @import 'pages/selectProfile';

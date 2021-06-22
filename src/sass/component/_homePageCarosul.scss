@@ -12,22 +12,36 @@
             rgba($color-white, 1) 0%,
             rgba($color-white, 1) 20%,
             rgba($color-white, .9) 50%,
-            rgba($color-white, .0)),
-         url(../../assets/img/4.jpg);
+            rgba($color-white, .0));
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         height: 60vh;
 
+        &__background-img {
+            background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 60vh;
+        }
+
         &__content {
             display: flex;
             justify-content: space-between;
+            z-index: 10;
+            position: relative;
         }
         &__image {
             width: 30rem !important;
             margin-right: 20rem;
             margin-bottom: -7rem;
             margin-top: 7rem;
+            z-index: 10;
         }
 
         &__left__div {
@@ -36,8 +50,10 @@
             margin-top: 9%;
             width: 40%;
             height: 60%;
+            z-index: 10;
         }
         &__wishlist {
+            z-index: 10;
             cursor: pointer;
             background-color: white;
             display: inline-block;

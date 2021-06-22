@@ -16,7 +16,12 @@
 
     &:hover {
         background-color: var(--color-Primary-dark);
+        color: $color-white;
     }
+}
+#btn-read {
+    width: 20rem;
+    font-size: 1.6rem;
 }
 
 .btn-read {

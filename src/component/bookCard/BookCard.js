@@ -1,12 +1,13 @@
 import React from 'react';
-import Book1 from '../../assets/img/book/1.png'
+import { Link } from 'react-router-dom'
 import Icon from '../../assets/img/sprite.svg'
 
 const BookCard = (props) => {
     return (
-        <a href='/bookdetail'>
-            <div className={props.width === '25' ? 'bookCard__wrapper width25': 'bookCard__wrapper width33'} >
-                <img className='bookCard__wrapper__img' src={Book1} alt='book' />
+        <Link to={props.link}>
+            {/* <div className={props.width === '25' ? 'bookCard__wrapper width25': 'bookCard__wrapper width100'} > */}
+            <div className={`bookCard__wrapper width${props.width}`} >
+                <img className='bookCard__wrapper__img' src={`http://localhost:8000/${props.book}`} alt='book' />
                 <div className="main__carosoul__wishlist" style={{position: 'absolute', left: '2rem', bottom: '2rem'}} >
                     <svg className="nav__items__icon">
                         <use xlinkHref={`${Icon}#icon-home`}></use>
@@ -18,7 +19,7 @@ const BookCard = (props) => {
                     </svg>
                 </div>
             </div>
-        </a>
+        </Link>
     );
 };
 

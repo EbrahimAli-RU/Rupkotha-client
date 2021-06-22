@@ -11,7 +11,9 @@ import EditSingleProfile from './container/profile/EditSingleProfile';
 import ProfileInterest from './container/profile/ProfileInterest';
 import SelectNewProfileImg from './container/profile/SelectNewProfileImg';
 import SelectProfile from './container/profile/SelectProfile';
+import ReadBook from './container/readBook/ReadBook';
 import SearchBook from './container/searchBook/SearchBook';
+import ViewMore from './container/viewMore/ViewMore';
 import Wishlist from './container/wishList/Wishlist';
 import Navigation from './layout/Navigation';
 
@@ -20,13 +22,15 @@ function App() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Switch>
+        <Route path='/book/channel' component={ViewMore} />
+        <Route path='/read' component={ReadBook} />
         <Route path='/wishlist' component={Wishlist} />
-        <Route path='/bookdetail' component={BookDetail} />
+        <Route path='/book/:bookId' component={BookDetail} />
         <Route path='/profile/create' component={CreateProfile} />
         <Route path='/profile/edit' component={EditProfile} />
-        <Route path='/profile/id/edit' component={EditSingleProfile} />
+        <Route path='/profile/:id/edit' component={EditSingleProfile} />
         <Route path='/profile/interest' component={ProfileInterest} />
         <Route path='/profile/new' component={SelectNewProfileImg}/>
         <Route path='/home' component={Main} />
