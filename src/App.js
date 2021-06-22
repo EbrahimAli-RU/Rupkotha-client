@@ -27,7 +27,7 @@ function App() {
         <Route path='/book/channel' component={ViewMore} />
         <Route path='/read' component={ReadBook} />
         <Route path='/wishlist' component={Wishlist} />
-        <Route path='/bookdetail' component={BookDetail} />
+        <Route path='/book/:bookId' component={BookDetail} />
         <Route path='/profile/create' component={CreateProfile} />
         <Route path='/profile/edit' component={EditProfile} />
         <Route path='/profile/:id/edit' component={EditSingleProfile} />

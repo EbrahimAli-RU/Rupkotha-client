@@ -28,7 +28,7 @@ const ViewMore = (props) => {
             <p className='view__more__secondary__title'>{book[0].category}</p>
             <div>
                 
-                {book.map(el => <BookCard key={el._id} width='25' book={el.cardPhoto}/> )}
+                {book.map(el => <BookCard key={el._id} link={`/book/${el._id}?_channel=${el.category}`} width='25' book={el.cardPhoto}/> )}
             </div>
             </>}
         </div>

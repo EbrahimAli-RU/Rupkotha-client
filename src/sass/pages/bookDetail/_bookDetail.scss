@@ -26,9 +26,16 @@
         }
     }
 
-    &__channel__content {
+    &__channel{
+        &__content {
         width: 80%;
         margin: auto;
+      }
+      &-title {
+          font-family: 'Lobster', sans-serif;
+          padding-top: 2rem;
+          font-size: 2rem;
+      }
     }
 
     &__detail__content {

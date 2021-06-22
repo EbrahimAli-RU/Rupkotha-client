@@ -12,7 +12,7 @@ import DotSpinner from '../../component/spinner/DotSpinner';
 const Main = () => {
     const [page, setPage] = useState(0)
 
-    const {loading, hasMore, book} = Books(page)
+    const {loading, hasMore, book, carosulItem } = Books(page)
 
     const observer = useRef()
     const lastBookElementRef = useCallback(node => {
@@ -31,11 +31,11 @@ const Main = () => {
         <Navigation />
             <OwlCarousel items={1}
                 className="owl-theme"
-                 nav center loop={true} dots={false} autoplay={true} autoplayTimeout={3000} autoplayHoverPause={true}>
-                    <HomePageCarosul />
-                    <HomePageCarosul />
-                    <HomePageCarosul />
-                    <HomePageCarosul />
+                 nav center loop={true} dots={true} autoplay={true} autoplayTimeout={3000} autoplayHoverPause={true}>
+                     {carosulItem.map((el, i) => <HomePageCarosul key={i} title={el.bookTitle} 
+                                 shortDescription={el.shortDescription} 
+                                 time={el.timeToRead} 
+                                 category={el.category} />)}
             </OwlCarousel>
             {book.length === 0 ? <DotSpinner />: 
             <div style={{width: '98%', margin: 'auto'}} >
@@ -48,26 +48,35 @@ const Main = () => {
                                 <a href={`/book/channel?_channel=${el._id}`}>View More</a>
                             </div>
                             <div className='bookCard'>
-                                {el.books.map(el => <BookCard key={el.id} book={el.cardPhoto} width='25' /> )}
+                                {el.books.length < 5 ?  <>{el.books.map((singleBook, i) => <BookCard link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='25' /> )}</>: 
+                            <OwlCarousel items={5}
+                                className="owl-theme" margin={10}
+                                nav center loop={true} dots={true} autoplay={false} autoplayTimeout={3000} autoplayHoverPause={true}>
+                                {el.books.map((singleBook, i) => <BookCard link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='100' /> )}
+                            </OwlCarousel>}
                             </div>
                             <div ref={lastBookElementRef} ></div>
                         </div>
                     )
                 } else {
                     return (
-                        <div className='main__books' key={i}>
+                     <div className='main__books' key={5}>
                             <div className='main__books__category' >
                                 <p>{el._id}</p>
                                 <a href={`/book/channel?_channel=${el._id}`}>View More</a>
                             </div>
                             <div className='bookCard'>
-                                {el.books.map(el => <BookCard key={el.id} book={el.cardPhoto} width='25' /> )}
+                            {el.books.length < 5 ?  <>{el.books.map((singleBook, i) => <BookCard link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='25' /> )}</>:
+                            <OwlCarousel items={5}
+                                className="owl-theme" margin={10}
+                                nav center loop={true} dots={false} autoplay={false} autoplayTimeout={3000} autoplayHoverPause={true}>
+                                {el.books.map((singleBook, i) => <BookCard key={i} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} book={singleBook.cardPhoto} width='100' /> )}
+                            </OwlCarousel>}
                             </div>
                             <div ></div>
                         </div>
                     )
                 }
-                
             })}
             {loading ? <DotSpinner />: null}
         </div>}
@@ -76,42 +85,3 @@ const Main = () => {
 };
 
 export default Main;
-
-
-
-{/* <div className='main__books' >
-                    <div className='main__books__category' >
-                        <p>Recent Added</p>
-                        <a href='/'>View More</a>
-                    </div>
-                    <div className='bookCard'>
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                    </div>
-                </div>
-                <div className='main__books'>
-                    <div className='main__books__category'>
-                        <p>Most Popular</p>
-                        <a href='/'>View More</a>
-                    </div>
-                    <div className='bookCard'>
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                    </div>
-                </div>
-                <div className='main__books'>
-                    <div className='main__books__category'>
-                        <p>Most Popular</p>
-                        <a href='/'>View More</a>
-                    </div>
-                    <div className='bookCard'>
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                        <BookCard width='25' />
-                    </div>
-                </div> */}
