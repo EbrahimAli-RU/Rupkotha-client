@@ -13,6 +13,7 @@ import SelectNewProfileImg from './container/profile/SelectNewProfileImg';
 import SelectProfile from './container/profile/SelectProfile';
 import ReadBook from './container/readBook/ReadBook';
 import SearchBook from './container/searchBook/SearchBook';
+import ViewMore from './container/viewMore/ViewMore';
 import Wishlist from './container/wishList/Wishlist';
 import Navigation from './layout/Navigation';
 
@@ -23,6 +24,7 @@ function App() {
     <>
       {/* <Navigation /> */}
       <Switch>
+        <Route path='/book/channel' component={ViewMore} />
         <Route path='/read' component={ReadBook} />
         <Route path='/wishlist' component={Wishlist} />
         <Route path='/bookdetail' component={BookDetail} />

@@ -45,7 +45,7 @@ const Main = () => {
                         <div className='main__books'  key={i}>
                             <div className='main__books__category' >
                                 <p>{el._id}</p>
-                                <a href='/'>View More</a>
+                                <a href={`/book/channel?_channel=${el._id}`}>View More</a>
                             </div>
                             <div className='bookCard'>
                                 {el.books.map(el => <BookCard key={el.id} book={el.cardPhoto} width='25' /> )}
@@ -58,7 +58,7 @@ const Main = () => {
                         <div className='main__books' key={i}>
                             <div className='main__books__category' >
                                 <p>{el._id}</p>
-                                <a href='/'>View More</a>
+                                <a href={`/book/channel?_channel=${el._id}`}>View More</a>
                             </div>
                             <div className='bookCard'>
                                 {el.books.map(el => <BookCard key={el.id} book={el.cardPhoto} width='25' /> )}
