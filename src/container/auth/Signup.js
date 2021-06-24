@@ -40,15 +40,15 @@ const Signup = (props) => {
             password: signupData.password,
             confirmPassword: signupData.confirmPassword
         }).then(res => {
+            localStorage.setItem('userId', JSON.stringify(res.data.data.user))
             props.history.push('/select/profile')
             setShowSpinner(false)
         }).catch(err => {
-            console.log(err.response)
             setIsShow({error: true, message: err.response.data.message})
             setShowSpinner(false)
             setTimeout(() => {
                 vanisErrorHandler()
-            }, 500)
+            }, 4200)
         })
     }
     const vanisErrorHandler = () => {
@@ -57,8 +57,8 @@ const Signup = (props) => {
 
     return (
         <div className='auth__wrapper signup'> 
-            <Spinner show={showSpinner} />
-            <Error show={isShow.error} message={isShow.message} />
+            <Spinner show={showSpinner}  />
+            <Error show={isShow.error} message={isShow.message} handler={vanisErrorHandler} />
             <div className='auth__container'>
                 <div className='auth__logo'>
                     <img src={photo} alt='logo' />

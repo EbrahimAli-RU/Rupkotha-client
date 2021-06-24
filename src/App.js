@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom'
 
 import ForgotPassword from './container/auth/ForgotPassword';
+import Logout from './container/auth/Logout';
 import Signin from './container/auth/Signin';
 import Signup from './container/auth/Signup';
 import BookDetail from './container/bookDetail/BookDetail';
@@ -27,6 +28,7 @@ function App() {
         <Route path='/book/channel' component={ViewMore} />
         <Route path='/read' component={ReadBook} />
         <Route path='/wishlist' component={Wishlist} />
+        <Route path='/logout' component={Logout} />
         <Route path='/book/:bookId' component={BookDetail} />
         <Route path='/profile/create' component={CreateProfile} />
         <Route path='/profile/edit' component={EditProfile} />

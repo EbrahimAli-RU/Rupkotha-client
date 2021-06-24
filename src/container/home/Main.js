@@ -11,8 +11,9 @@ import DotSpinner from '../../component/spinner/DotSpinner';
 
 const Main = () => {
     const [page, setPage] = useState(0)
+    const [carosulItem, setCarosulItem] = useState([])
 
-    const {loading, hasMore, book, carosulItem } = Books(page)
+    const {loading, hasMore, book} = Books(page)
 
     const observer = useRef()
     const lastBookElementRef = useCallback(node => {
@@ -25,18 +26,28 @@ const Main = () => {
         if(node) observer.current.observe(node)
     }, [book])
 
+    useEffect(() => {
+        axios.get('/book/carosul').then(res => {
+            setCarosulItem(res.data.data.carosul)
+            console.log(res.data.data.carosul)
+        }).catch(err => {
+            console.log(err.response)
+        })
+    }, [])
+
     return (
-        <div id='scroll'>
-            
+        <div id='scroll'>           
         <Navigation />
-            <OwlCarousel items={1}
+            {carosulItem.length === 0 ? <DotSpinner />: 
+                <OwlCarousel items={1}
                 className="owl-theme"
                  nav center loop={true} dots={true} autoplay={true} autoplayTimeout={3000} autoplayHoverPause={true}>
                      {carosulItem.map((el, i) => <HomePageCarosul key={i} title={el.bookTitle} 
                                  shortDescription={el.shortDescription} 
                                  time={el.timeToRead} 
                                  category={el.category} />)}
-            </OwlCarousel>
+                </OwlCarousel>
+            }
             {book.length === 0 ? <DotSpinner />: 
             <div style={{width: '98%', margin: 'auto'}} >
             {book.map((el, i) => {
@@ -60,7 +71,7 @@ const Main = () => {
                     )
                 } else {
                     return (
-                     <div className='main__books' key={5}>
+                     <div className='main__books' key={i}>
                             <div className='main__books__category' >
                                 <p>{el._id}</p>
                                 <a href={`/book/channel?_channel=${el._id}`}>View More</a>

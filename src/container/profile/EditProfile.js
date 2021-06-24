@@ -4,28 +4,23 @@ import Profile from '../../component/profileTitle/Profile';
 import SearchBox from '../../component/searchBox/SearchBox';
 import Spinner from '../../component/Spinner';
 import Navigation from '../../layout/Navigation';
-// import Cookies from 'universal-cookie';
-import cookie from 'react-cookie'
+
 
 const EditProfile = (props) => {
     const [childs, setChilds] = useState([])
     const [searchItem, setSearchItem] = useState('')
     const [filterChild, setFilterChild] = useState([]);
     
-//Object.entries({}).length === 0
     useEffect(() => {
-        console.log(props)
-        console.log(document.cookie)
-        axios.get('/user/60c94e444616bd09fcd30200').then(res => {
+        axios.get(`/user/${JSON.parse(localStorage.getItem('userId'))}`).then(res => {
             setChilds(res.data.users.children)
-            console.log(res.data.users.children)
         }).catch(err => {
             console.log(err.response)
         })
     }, [])
     const searchHandler = (e) => {
         setSearchItem(e.target.value)
-        const filter = childs.filter(el => el.name === e.target.value)
+        const filter = childs.filter(el => el.name.toLowerCase().startsWith(`${e.target.value.toLowerCase()}`))
         setFilterChild(filter)
     }
     return (

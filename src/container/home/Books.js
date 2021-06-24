@@ -4,8 +4,9 @@ export default function Books(page)  {
     const [book, setBook] = useState([])
     const [loading, setLoading] = useState(true)
     const [hasMore, setHasMore] = useState(false)
-    const [carosulItem, setCarosulItem] = useState([])
+    // const [carosulItem, setCarosulItem] = useState([])
     useEffect(() => {
+        console.log(page)
         setLoading(true)
         setTimeout(() => {
             axios({
@@ -18,8 +19,8 @@ export default function Books(page)  {
                 let hhh = [...book, ...res.data.data.book]
                 hhh = [...new Map(hhh.map(item => [item["_id"], item])).values()]
                 setBook(hhh)
-                if(page === 0) setCarosulItem(res.data.data.carosul)
-                console.log(res.data.data.carosul)
+                // if(page === 0) setCarosulItem(res.data.data.carosul)
+                // console.log(res.data.data.carosul)
                 // setBook(preBook => [...new Set([...preBook, ...res.data.data.book.map(book => book._id)])])
     
             }).catch(err => {
@@ -28,5 +29,5 @@ export default function Books(page)  {
             })
         }, 1000)
     }, [page])
-    return {book, loading, hasMore, carosulItem};
+    return {book, loading, hasMore};
 };

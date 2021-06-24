@@ -13,10 +13,16 @@ const ProfileInterest = (props) => {
     const profile = useSelector(state => state.profile)
     const dispatch = useDispatch();
     const [interests, setInterest] = useState([])
+    
 
     useEffect(() => {
-        let userInterest = props.location.search.split('=')[1]
-        userInterest = userInterest.split('+') 
+        
+        let userInterest = [], userInterestStr
+        if( props.location.search !== "") {
+            userInterestStr = props.location.search.split('=')[1]
+            userInterest = userInterestStr.split('+')
+        }
+
         axios.get('http://localhost:8000/api/v1/interest').then(res => {
             
             const interests =  res.data.data.interest.map(el => { 
@@ -31,6 +37,9 @@ const ProfileInterest = (props) => {
         }).catch(err => {
             console.log(err.response)
         })
+          
+        console.log(userInterest)
+        
     }, [props.location.search])
     
     const interestHandler = (id, name) => {

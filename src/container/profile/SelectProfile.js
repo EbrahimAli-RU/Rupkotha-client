@@ -13,17 +13,17 @@ const SelectProfile = (props) => {
     const [searchItem, setSearchItem] = useState('')
     const [filterChild, setFilterChild] = useState([]);
 
+
     useEffect(() => {
-        axios.get('/user/60c94e444616bd09fcd30200').then(res => {
+        axios.get(`/user/${JSON.parse(localStorage.getItem('userId'))}`).then(res => {
             setChilds(res.data.users.children)
-            console.log(res.data.users.children)
         }).catch(err => {
             console.log(err.response)
         })
     }, [])
     const searchHandler = (e) => {
         setSearchItem(e.target.value)
-        const filter = childs.filter(el => el.name === e.target.value)
+        const filter = childs.filter(el =>  el.name.toLowerCase().startsWith(`${e.target.value.toLowerCase()}`))
         setFilterChild(filter)
     }
 

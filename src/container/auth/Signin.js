@@ -38,14 +38,13 @@ const Signin = (props) => {
         }).then(res => {
             setShowSpinner(false)
             props.history.push('/select/profile')
-            console.log(res.data.data)
+            localStorage.setItem('userId', JSON.stringify(res.data.data.user))
         }).catch(err => {
-            console.log(err.response)
             setShowSpinner(false)
             setIsShow({error: true, message: err.response.data.message})
             setTimeout(() => {
                 vanisErrorHandler()
-            }, 500)
+            }, 4200)
         })
     }
     const vanisErrorHandler = () => {
@@ -54,7 +53,7 @@ const Signin = (props) => {
     return (
         <div className='auth__wrapper signin'> 
             <Spinner show={showSpinner} />
-            <Error show={isShow.error} message={isShow.message} />
+            <Error show={isShow.error} message={isShow.message} handler={vanisErrorHandler} />
             <div className='auth__container'>
                 <div className='auth__logo'>
                     <img src={photo} alt='logo' />
