@@ -1,30 +1,76 @@
 .read__book {
-    margin-top: 9rem;
-    background-color: crimson;
+    margin-top: 2vh;
+    overflow: hidden;
+    background-color: rgb(255, 254, 254);
 
     &__pdf {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
-        height: 80vh;
-        background-color: crimson;
+        height: 90vh;
     }
 }
 
 .book {
     position: relative;
-    width: 50%;
+    width: 94%;
     height: 90%;
+    // overflow: hidden;
 }
 
 .paper {
     position: absolute;
-    width: 100%;
+    width: calc(50% - 5.7rem);
     height: 100%;
     top: 0;
-    left: 0;
-    perspective: 1500px;    
+    left: 49.5%;
+    perspective: 1500px;     
 }
+
+.paper1 {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 93%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px;
+    perspective: 1500px;     
+}
+#p1 {
+    margin-left: 5rem;
+}
+#p7 {
+    margin-left: 4.8rem;
+}
+#p2 {
+    margin-left: 4.6rem;
+}
+#p8 {
+    margin-left: 4.4rem;
+}
+#p3 {
+    margin-left: 4.2rem;
+}
+#p9 {
+    margin-left: 4rem;
+}
+#p4 {
+    margin-left: 3.8rem;
+}
+#p10 {
+    margin-left: 3.6rem;
+}
+#p5 {
+    margin-left: 3.4rem;
+}
+#p11 {
+    margin-left: 3.2rem;
+}
+#p6 {
+    margin-left: 3rem;
+}
+
+
+
 .front,
 .back {
     background-color: white;
@@ -35,16 +81,18 @@
     left: 0;
     transform-origin: left;
     transition: transform 1s;
+    
 }
 
 .front {
     z-index: 1;
     backface-visibility: hidden;
-    
+    border-left: 1px solid white;
 }
 
 .back {
     z-index: 0;
+    border-right: 1px solid white;
 }
 
 .front__content,
@@ -61,28 +109,41 @@
     transform: rotateY(180deg);
 }
 
-// flipped effext
-
 .flipped .front,
 .flipped .back {
     transform: rotateY(-180deg);
     // z-index: 7;
 }
-// .backZ {
-//     z-index: 6;
-// }
-// #p1 {
-//     z-index: 3;
-// }
 
-// #p2 {
-//     z-index: 2;
-// }
-
-// #p3 {
-//     z-index: 1;
-// }
 
 #prev-btn {
-    margin-right: 50%;
+   // margin-right: 50%;
+}
+
+.forward__btn, .back__btn {
+    border-radius: 50%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.btn__svg {
+    width: 3.5rem;
+    height: 3.5rem;
+    fill: var(--color-Grey-dark-2);
+    transition: all .2s ease-out;
+    &:hover {
+        fill: darken( #777, 15%);
+    }
+    &:active {
+        fill: black;
+    }
+}
+
+.read__book__audio {
+    width: 90%;
+    margin: auto;
+}
+.audio {
+    width: 100%;
 }

@@ -7,6 +7,7 @@ import photo3 from '../../assets/img/3.jpg'
 import back4 from '../../assets/img/4.jpg'
 import back5 from '../../assets/img/5.jpg'
 import back6 from '../../assets/img/6.jpg'
+
 const ReadBook = () => {
     const arr = [photo1,photo2,photo3,back4,back5,back6,photo1,photo2,photo3,back4,back5,back6];
     let currentLocation = 0;
@@ -44,76 +45,54 @@ const ReadBook = () => {
     }
     return (
         <div className='read__book'>
-            <button>CLICK</button>
             <div className='read__book__pdf'>
                 {/* Prev--button */}
-                <button  onClick={goPrevPage} id='prev-btn'>
-                    <div className="nav__items__icon-wrapper" >
-                        <svg className="nav__items__icon">
-                            <use xlinkHref={`${Icon}#icon-home`}></use>
-                        </svg>
-                    </div>
-                </button>
 
-                <div className='book' id='book'>
+                    <button  onClick={goPrevPage} id='prev-btn' className='back__btn'>
+                            <svg className="btn__svg">
+                                <use xlinkHref={`${Icon}#icon-circle-right`}></use>
+                            </svg>
+                    </button>
+
+                <div className='book' id='book'>   
+                
                     {arr.map((el, i) => (
-                        <div key={i+1} className='paper' style={{zIndex: `${arr.length - i}`, marginRight: `${arr.length - i}`}}  >
-                        <div className='front'>
-                            <div id='f1' className='front__content'>
-                                {/* <h1>Front {i+1}</h1> */}
-                                <img style={{width:'100%'}} src={el} alt='ggg' />
+                        <div key={i+1} className='paper marginL marginR' style={{
+                            zIndex: `${arr.length - i}`, 
+                            }}  >
+                            <div className='front'>
+                                <div id='f1' className='front__content'>  
+                                    <img style={{width:'100%', height: '100%'}} src={el} alt='ggg' />
+                                </div>
                             </div>
-                        </div>
 
-                        <div className='back'>
-                            <div id='b1' className='back__content'>
-                                {/* <h1>Back {i+1}</h1> */}
-                                <img style={{width:'100%', height: '100%', }} src={el} alt='ggg' />
+                            <div className='back'>
+                                <div id='b1' className='back__content'> 
+                                    <img style={{width:'100%', height: '100%', }} src={el} alt='ggg' />
+                                </div>
                             </div>
                         </div>
-                    </div>
                     ))}
-
-                    {/* <div className='paper ' id='p2'>
-                        <div className='front'>
-                            <div id='f2' className='front__content'>
-                                <h1>Front 2</h1>
-                            </div>
-                        </div>
-
-                        <div className='back'>
-                            <div id='b2' className='back__content'>
-                                <h1>Back 2</h1>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='paper ' id='p3'>
-                        <div className='front'>
-                            <div id='f3' className='front__content'>
-                                <h1>Front 3</h1>
-                            </div>
-                        </div>
-
-                        <div className='back'>
-                            <div id='b3' className='back__content'>
-                                <h1>Back 3</h1>
-                            </div>
-                        </div>
-                    </div> */}
+                    
+                    <div class="paper1" id='p1'></div>
+                    <div class="paper1" id='p2'></div>
+                    <div class="paper1" id='p3'></div>
+                    <div class="paper1" id='p4'></div>
+                    <div class="paper1" id='p5'></div>
+                    <div class="paper1" id='p6'></div>
                 </div>
 
                 {/* next--button */}
-                <button onClick={goNextPage} id='next-btn'>
-                    <div className="nav__items__icon-wrapper" >
-                        <svg className="nav__items__icon">
-                            <use xlinkHref={`${Icon}#icon-home`}></use>
-                        </svg>
-                    </div>
-                </button>
+
+                    <button onClick={goNextPage} id='next-btn' className='forward__btn'>
+                            <svg className="btn__svg">
+                                <use xlinkHref={`${Icon}#icon-circle-left`}></use>
+                            </svg>
+                    </button>
+
             </div>
             <div className='read__book__audio'>
-                <audio style={{width: '100%'}} controls>
+                <audio className='audio' controls>
                     <source src={audio} />
                 </audio>
             </div>
