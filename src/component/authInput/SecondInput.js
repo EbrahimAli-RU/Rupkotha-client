@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from '../../assets/img/sprite.svg'
+import { Link } from 'react-router-dom'
 
 const SecondInput = (props) => {
     return (
@@ -8,11 +9,11 @@ const SecondInput = (props) => {
             <p id='second__input__para'>Interests</p>
             <p className='second__input__interest' >3 Selected</p>
         </div>
-        <a href={props.link}>
+        <Link to={props.link}>
             <svg className='profile__user__edit-button marginRight-small cursor-pointer'>
                 <use xlinkHref={`${Icon}#icon-home`}></use>
             </svg>
-        </a>
+        </Link>
     </div>
     );
 };
