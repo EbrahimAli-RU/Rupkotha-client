@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect, useLayoutEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux'
 import { withRouter } from 'react-router'
 import axios from '../../utils/axios/axios'
@@ -10,10 +10,15 @@ import Spinner from '../../component/Spinner';
 import Navigation from '../../layout/Navigation';
 
 const ProfileInterest = (props) => {
-    const profile = useSelector(state => state.profile)
-    const dispatch = useDispatch();
     const [interests, setInterest] = useState([])
-    
+    const profile = useSelector(state => state.profile)
+
+    const dispatch = useDispatch();
+
+
+    if(profile.photo === '' && props.location.search.split('&')[1] !== "n=false") {
+        props.history.replace('/profile/new');
+    }
 
     useEffect(() => {
         
@@ -23,23 +28,16 @@ const ProfileInterest = (props) => {
             userInterest = userInterestStr.split('+')
         }
 
-        axios.get('http://localhost:8000/api/v1/interest').then(res => {
-            
+        axios.get('/interest').then(res => {  
             const interests =  res.data.data.interest.map(el => { 
-                return { 
-                    inter: {
-                        ...el, 
-                        selected: userInterest.includes(el.title)
-                    } 
+                return { inter: { ...el, selected: userInterest.includes(el.title) } 
                 }
             })
-             setInterest(interests)
+            setInterest(interests)
         }).catch(err => {
             console.log(err.response)
         })
-          
-        console.log(userInterest)
-        
+        return () => { setInterest([]) }
     }, [props.location.search])
     
     const interestHandler = (id, name) => {
