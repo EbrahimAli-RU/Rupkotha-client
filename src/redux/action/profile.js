@@ -35,6 +35,8 @@ export const interestHandler = (interest) => {
     }
 }
 
+
+
 // export const currentProfileHandler = () => {
 //     const currentProfile = JSON.parse(localStorage.getItem('currentProfile'))
 //     return {

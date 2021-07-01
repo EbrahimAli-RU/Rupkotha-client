@@ -25,7 +25,7 @@ const Navigation = () => {
                 <a href='/wishlist'>
                     <div className="nav__items__icon-wrapper" >
                         <svg className="nav__items__icon">
-                            <use xlinkHref={`${Icon}#icon-home`}></use>
+                            <use xlinkHref={`${Icon}#icon-heart`}></use>
                         </svg>
                     </div>
                 </a>

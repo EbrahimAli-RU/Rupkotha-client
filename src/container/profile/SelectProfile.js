@@ -6,6 +6,8 @@ import Profile from '../../component/profileTitle/Profile';
 import SearchBox from '../../component/searchBox/SearchBox';
 import Spinner from '../../component/Spinner'
 import Navigation from '../../layout/Navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 const SelectProfile = (props) => {
@@ -41,9 +43,11 @@ const SelectProfile = (props) => {
             <div className='select__profile__btn-search'>
                <a href='/profile/new'>
                     <button id='btn-read' className='btn btn-read'> 
-                        <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
+                        {/* <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
                                 <use xlinkHref={`${Icon}#icon-home`}></use>
-                        </svg>add profile</button>
+                        </svg>add profile */}
+                        <div style={{display: 'inline-block', border: '3px solid white', borderRadius: '50%'}}><FontAwesomeIcon style={{padding: '2px'}} icon={faPlus} /></div> add profile
+                        </button>
                 </a>
                    <SearchBox handler={searchHandler} value={searchItem} /> 
             </div>

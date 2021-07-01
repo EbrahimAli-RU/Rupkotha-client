@@ -2,6 +2,8 @@ import React from 'react';
 import Icon from '../../assets/img/sprite.svg'
 import Book from '../../assets/img/little.png'
 import backgroundImg from '../../assets/img/2.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
 
 const HomePageCarosul = (props) => {
     return (
@@ -13,12 +15,10 @@ const HomePageCarosul = (props) => {
                         <div>
                             <button className='btn btn-read'> 
                             <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
-                                    <use xlinkHref={`${Icon}#icon-home`}></use>
+                                    <use xlinkHref={`${Icon}#icon-book`}></use>
                                 </svg>Read</button>
                             <div className="main__carosoul__wishlist" >
-                                <svg className="nav__items__icon">
-                                    <use xlinkHref={`${Icon}#icon-home`}></use>
-                                </svg>
+                                <FontAwesomeIcon icon={faHeart} size='lg' color='crimson' />
                             </div>
                         </div>
                         <p>{props.shortDescription}</p>

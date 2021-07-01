@@ -49,7 +49,7 @@ const Main = () => {
                 </OwlCarousel>
             }
             {book.length === 0 ? <DotSpinner />: 
-            <div style={{width: '98%', margin: 'auto'}} >
+            <div style={{width: '98%', margin: 'auto', scrollBehavior: 'smooth'}} >
             {book.map((el, i) => {
                 if((i+1) === book.length) {
                     return (
