@@ -27,6 +27,7 @@
 
         &:hover {
             background-color: darken($color: #e6f5fe, $amount: 20%);
+            color: white;
         }
     }
     &__title__wrapper {

@@ -1,5 +1,4 @@
 import { Switch, Route } from 'react-router-dom'
-
 import ForgotPassword from './container/auth/ForgotPassword';
 import Logout from './container/auth/Logout';
 import Signin from './container/auth/Signin';
