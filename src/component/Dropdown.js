@@ -1,5 +1,6 @@
 import React, {useState ,useEffect} from 'react';
 import photo from '../assets/img/profile1.png'
+import Icon from '../assets/img/sprite.svg'
 
 const Dropdown = () => {
     const [currentProfile, setcurrentProfile] = useState({})
@@ -22,7 +23,11 @@ const Dropdown = () => {
     }, [])
     return (
         <div className="dropdown">
-            {cookie === false || currentProfile === null ? <button className="dropdown-btn"><img className='nav__items__profile-photo' src={photo} alt='profile' /></button> : 
+            {cookie === false || currentProfile === null ? <button className="dropdown-btn"><div className="nav__items__icon-wrapper" >
+                        <svg className="nav__items__icon">
+                            <use xlinkHref={`${Icon}#icon-user`}></use>
+                        </svg>
+                    </div></button> : 
             <>
                 <button className="dropdown-btn"><img className='nav__items__profile-photo' src={`http://localhost:8000/${currentProfile.photo}`} alt='profile' /></button>
                 <div className="dropdown-content">
