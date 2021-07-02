@@ -4,3 +4,7 @@ export {
     ageHandler, 
     languageHandler, 
     interestHandler } from './profile'
+
+export {
+    fetchWishlist
+} from './wishlist'

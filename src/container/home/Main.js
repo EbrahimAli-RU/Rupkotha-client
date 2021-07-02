@@ -1,4 +1,5 @@
-import React, {useState, useEffect, useCallback, useRef} from 'react';
+import React, {useState, useEffect, useCallback, useRef, useLayoutEffect} from 'react';
+import { useDispatch } from 'react-redux'
 import axios from '../../utils/axios/axios'
 import BookCard from '../../component/bookCard/BookCard';
 import HomePageCarosul from '../../component/homePagecarosul/HomePageCarosul'
@@ -8,13 +9,18 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Navigation from '../../layout/Navigation';
 import Books from './Books'
 import DotSpinner from '../../component/spinner/DotSpinner';
+import * as action from '../../redux/action/index'
 
 const Main = () => {
+    /////STATE
     const [page, setPage] = useState(0)
     const [carosulItem, setCarosulItem] = useState([])
+    const dispatch = useDispatch();
 
+    /////GET DATA FROM BOOK.JS 
     const {loading, hasMore, book} = Books(page)
 
+    //FOR INFINITE SCROLLING
     const observer = useRef()
     const lastBookElementRef = useCallback(node => {
         if(observer.current) observer.current.disconnect()
@@ -26,15 +32,21 @@ const Main = () => {
         if(node) observer.current.observe(node)
     }, [book])
 
+    //FETCHING WISHLIST
+    // useLayoutEffect(() => {
+    //     dispatch(action.fetchWishlist('60d35cc36099a233849ae2e7'));
+    // }, [])
+
+    //FTECHING CAROSUL ITEMS
     useEffect(() => {
         axios.get('/book/carosul').then(res => {
             setCarosulItem(res.data.data.carosul)
-            console.log(res.data.data.carosul)
         }).catch(err => {
             console.log(err.response)
         })
     }, [])
 
+    /////RENDERING
     return (
         <div id='scroll'>           
         <Navigation />
@@ -59,11 +71,11 @@ const Main = () => {
                                 <a href={`/book/channel?_channel=${el._id}`}>View More</a>
                             </div>
                             <div className='bookCard'>
-                                {el.books.length < 5 ?  <>{el.books.map((singleBook, i) => <BookCard link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='25' /> )}</>: 
+                                {el.books.length < 5 ?  <>{el.books.map((singleBook, i) => <BookCard wishlist={singleBook.isWishlisted} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='25' /> )}</>: 
                             <OwlCarousel items={5}
                                 className="owl-theme" margin={10}
                                 nav center loop={true} dots={true} autoplay={false} autoplayTimeout={3000} autoplayHoverPause={true}>
-                                {el.books.map((singleBook, i) => <BookCard link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='100' /> )}
+                                {el.books.map((singleBook, i) => <BookCard wishlist={singleBook.isWishlisted} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='100' /> )}
                             </OwlCarousel>}
                             </div>
                             <div ref={lastBookElementRef} ></div>
@@ -77,11 +89,11 @@ const Main = () => {
                                 <a href={`/book/channel?_channel=${el._id}`}>View More</a>
                             </div>
                             <div className='bookCard'>
-                            {el.books.length < 5 ?  <>{el.books.map((singleBook, i) => <BookCard link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='25' /> )}</>:
+                            {el.books.length < 5 ?  <>{el.books.map((singleBook, i) => <BookCard wishlist={singleBook.isWishlisted} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='25' /> )}</>:
                             <OwlCarousel items={5}
                                 className="owl-theme" margin={10}
                                 nav center loop={true} dots={false} autoplay={false} autoplayTimeout={3000} autoplayHoverPause={true}>
-                                {el.books.map((singleBook, i) => <BookCard key={i} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} book={singleBook.cardPhoto} width='100' /> )}
+                                {el.books.map((singleBook, i) => <BookCard wishlist={singleBook.isWishlisted} key={i} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} book={singleBook.cardPhoto} width='100' /> )}
                             </OwlCarousel>}
                             </div>
                             <div ></div>

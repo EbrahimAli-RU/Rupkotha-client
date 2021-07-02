@@ -18,7 +18,7 @@ const HomePageCarosul = (props) => {
                                     <use xlinkHref={`${Icon}#icon-book`}></use>
                                 </svg>Read</button>
                             <div className="main__carosoul__wishlist" >
-                                <FontAwesomeIcon icon={faHeart} size='lg' color='crimson' />
+                                <FontAwesomeIcon icon={faHeart} style={{color: 'red', fontSize: '3rem'}} />
                             </div>
                         </div>
                         <p>{props.shortDescription}</p>
