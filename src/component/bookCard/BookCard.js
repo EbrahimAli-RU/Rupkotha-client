@@ -7,12 +7,12 @@ import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
 
 const BookCard = (props) => {
     return (
-        <Link to={props.link}>
+        <>
             <div className={`bookCard__wrapper width${props.width}`} >
-                <img className='bookCard__wrapper__img' src={`http://localhost:8000/${props.book}`} alt='book' />
+            <Link to={props.link}><img className='bookCard__wrapper__img' src={`http://localhost:8000/${props.book}`} alt='book' /></Link>
                 <div className="main__carosoul__wishlist" style={{position: 'absolute', left: '2rem', bottom: '2rem'}} >
-                    {props.wishlist !==-1 ? <FontAwesomeIcon icon={fasHeart}  style={{color: 'red', fontSize: '2.5rem'}}  />:
-                    <FontAwesomeIcon icon={faHeart}  style={{color: 'red', fontSize: '2.5rem'}} />}
+                    {props.wishlist !== -1 ? <FontAwesomeIcon onClick={() => props.handler(props.id, props.category)} icon={fasHeart}  style={{color: 'red', fontSize: '2.5rem', cursor: 'pointer'}}  />:
+                    <FontAwesomeIcon onClick={() => props.handler(props.id, props.category)} icon={faHeart}  style={{color: 'red', fontSize: '2.5rem', cursor: 'pointer'}} />}
                 </div>
                 <div className="main__carosoul__wishlist" style={{position: 'absolute', right: '2rem', bottom: '2rem'}} >
                     <svg className="nav__items__icon">
@@ -20,7 +20,8 @@ const BookCard = (props) => {
                     </svg>
                 </div>
             </div>
-        </Link>
+        </>
+        
     );
 };
 

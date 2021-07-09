@@ -26,7 +26,6 @@ export const fetchWishlist = (id) => {
         dispatch(startFetching());
         axios.get(`/wishlist/${id}`).then(res => {
             dispatch(successFetching(res.data.data.wishList))
-            console.log(res.data.data.wishList)
         }).catch(err => {
             failFetching(err.response)
             console.log(err.response)

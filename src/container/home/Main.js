@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useCallback, useRef, useLayoutEffect} from 'react';
-import { useDispatch } from 'react-redux'
+import React, {useState, useEffect, useCallback, useRef} from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import axios from '../../utils/axios/axios'
 import BookCard from '../../component/bookCard/BookCard';
 import HomePageCarosul from '../../component/homePagecarosul/HomePageCarosul'
@@ -9,16 +9,59 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Navigation from '../../layout/Navigation';
 import Books from './Books'
 import DotSpinner from '../../component/spinner/DotSpinner';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import * as action from '../../redux/action/index'
 
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1
+  }
+};
+
+const responsiveCarosul = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 1
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
 const Main = () => {
     /////STATE
     const [page, setPage] = useState(0)
     const [carosulItem, setCarosulItem] = useState([])
-    const dispatch = useDispatch();
+    const [wishlist, setWishlist] = useState({id: '', category: '', isInserted: false})
+    const wishlistFromRedux = useSelector(state => state.wishlist)
 
     /////GET DATA FROM BOOK.JS 
-    const {loading, hasMore, book} = Books(page)
+    const {loading, hasMore, book} = Books(page, wishlist.id, wishlist.category, wishlist.isInserted)
 
     //FOR INFINITE SCROLLING
     const observer = useRef()
@@ -32,33 +75,60 @@ const Main = () => {
         if(node) observer.current.observe(node)
     }, [book])
 
-    //FETCHING WISHLIST
-    // useLayoutEffect(() => {
-    //     dispatch(action.fetchWishlist('60d35cc36099a233849ae2e7'));
-    // }, [])
-
     //FTECHING CAROSUL ITEMS
     useEffect(() => {
         axios.get('/book/carosul').then(res => {
-            setCarosulItem(res.data.data.carosul)
+            res.data.data.carosul =  res.data.data.carosul.map(el => {
+                return {...el, isWishlisted: wishlistFromRedux.wishlist.findIndex(wish => wish.bookId._id === el._id)}})
+                setCarosulItem(res.data.data.carosul)
         }).catch(err => {
             console.log(err.response)
         })
-    }, [])
+    }, [wishlistFromRedux.wishlist])
+    const carosulWishlistHandler = (id) => {
+        
+        axios.post('/wishlist', {bookId: id, userId: JSON.parse(localStorage.getItem('userId'))}).then(res => {
+            let carosulItemCopy = [...carosulItem]
+            for(let i=0;i<carosulItemCopy.length;i++) {
+                if(carosulItemCopy[i]._id === id) {
+                    res.data.data.message === 'created'? 
+                        carosulItemCopy[i].isWishlisted = i+1 : 
+                        carosulItemCopy[i].isWishlisted = -1
+                }
+            }
+            setCarosulItem(carosulItemCopy);
+        }).catch(err => {
+            console.log(err.response)
+        })
+    }
+
+    /////HANDLING WISHLIST 
+    const wishlistHandler = (id, category) => {
+        axios.post('/wishlist', {bookId: id, userId: JSON.parse(localStorage.getItem('userId'))}).then(res => {
+            res.data.data.message === 'created' ? 
+                setWishlist({id, category, isInserted: true}) : 
+                setWishlist({id, category, isInserted: false})
+        }).catch(err => {
+            console.log(err.response)
+        })
+    }
 
     /////RENDERING
     return (
         <div id='scroll'>           
         <Navigation />
             {carosulItem.length === 0 ? <DotSpinner />: 
-                <OwlCarousel items={1}
-                className="owl-theme"
-                 nav center loop={true} dots={true} autoplay={true} autoplayTimeout={3000} autoplayHoverPause={true}>
-                     {carosulItem.map((el, i) => <HomePageCarosul key={i} title={el.bookTitle} 
+                <Carousel 
+                responsive={responsiveCarosul} showDots autoPlay infinite autoPlaySpeed={3000} dotListClass="custom-dot-list-style" >
+                     {carosulItem.map((el, i) => <HomePageCarosul key={i} 
+                                 title={el.bookTitle} 
                                  shortDescription={el.shortDescription} 
                                  time={el.timeToRead} 
-                                 category={el.category} />)}
-                </OwlCarousel>
+                                 category={el.category}
+                                 handler={carosulWishlistHandler}
+                                 id={el._id}
+                                 wishlist={el.isWishlisted} />)}
+                </Carousel>
             }
             {book.length === 0 ? <DotSpinner />: 
             <div style={{width: '98%', margin: 'auto', scrollBehavior: 'smooth'}} >
@@ -71,12 +141,30 @@ const Main = () => {
                                 <a href={`/book/channel?_channel=${el._id}`}>View More</a>
                             </div>
                             <div className='bookCard'>
-                                {el.books.length < 5 ?  <>{el.books.map((singleBook, i) => <BookCard wishlist={singleBook.isWishlisted} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='25' /> )}</>: 
-                            <OwlCarousel items={5}
-                                className="owl-theme" margin={10}
-                                nav center loop={true} dots={true} autoplay={false} autoplayTimeout={3000} autoplayHoverPause={true}>
-                                {el.books.map((singleBook, i) => <BookCard wishlist={singleBook.isWishlisted} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='100' /> )}
-                            </OwlCarousel>}
+                                {el.books.length < 5 ?  <>
+                                    {el.books.map((singleBook, i) => 
+                                        <BookCard 
+                                            wishlist={singleBook.isWishlisted} 
+                                            link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} 
+                                            key={i} 
+                                            book={singleBook.cardPhoto} 
+                                            width='25'
+                                            handler={wishlistHandler}
+                                            id={singleBook.id}
+                                            category={el._id} /> )}</>: 
+                                    <Carousel 
+                                        responsive={responsive}>
+                                        {el.books.map((singleBook, i) => 
+                                            <BookCard 
+                                                wishlist={singleBook.isWishlisted} 
+                                                link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} 
+                                                key={i} 
+                                                book={singleBook.cardPhoto} 
+                                                width='100'
+                                                handler={wishlistHandler}
+                                                id={singleBook.id}
+                                                category={el._id} /> )}
+                                    </Carousel>}
                             </div>
                             <div ref={lastBookElementRef} ></div>
                         </div>
@@ -89,12 +177,30 @@ const Main = () => {
                                 <a href={`/book/channel?_channel=${el._id}`}>View More</a>
                             </div>
                             <div className='bookCard'>
-                            {el.books.length < 5 ?  <>{el.books.map((singleBook, i) => <BookCard wishlist={singleBook.isWishlisted} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} key={i} book={singleBook.cardPhoto} width='25' /> )}</>:
-                            <OwlCarousel items={5}
-                                className="owl-theme" margin={10}
-                                nav center loop={true} dots={false} autoplay={false} autoplayTimeout={3000} autoplayHoverPause={true}>
-                                {el.books.map((singleBook, i) => <BookCard wishlist={singleBook.isWishlisted} key={i} link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} book={singleBook.cardPhoto} width='100' /> )}
-                            </OwlCarousel>}
+                            {el.books.length < 5 ?  <>
+                                {el.books.map((singleBook, i) => 
+                                    <BookCard 
+                                        handler={wishlistHandler} 
+                                        wishlist={singleBook.isWishlisted} 
+                                        link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} 
+                                        key={i} 
+                                        book={singleBook.cardPhoto} 
+                                        width='25'
+                                        id={singleBook.id}
+                                        category={el._id}  /> )}</>:
+                                <Carousel 
+                                    responsive={responsive}>
+                                    {el.books.map((singleBook, i) => 
+                                        <BookCard 
+                                            handler={wishlistHandler} 
+                                            wishlist={singleBook.isWishlisted} 
+                                            key={i} 
+                                            link={`/book/${singleBook.id}?_channel=${singleBook.channel}`} 
+                                            book={singleBook.cardPhoto} 
+                                            width='100'
+                                            id={singleBook.id}
+                                            category={el._id}  /> )}
+                                </Carousel>}
                             </div>
                             <div ></div>
                         </div>

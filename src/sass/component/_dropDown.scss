@@ -1,7 +1,7 @@
 .dropdown {
     position: relative;
     display: inline-block;
-
+    z-index: 1000;
     &-btn {
         background-color: transparent;
         color: var(--color-Grey-dark-2);
@@ -19,7 +19,7 @@
         border-radius: 2rem;
         width: 20rem;
         box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
-        z-index: 100;
+        z-index: 1000;
 
         &-profile {
             height: 4.5rem;

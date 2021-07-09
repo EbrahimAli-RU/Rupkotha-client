@@ -1,7 +1,8 @@
 const initialState = {
     loading: false,
     error: null,
-    wishlist: []
+    wishlist: [],
+    success: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,14 +16,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 wishlist: action.wishlist,
-                loading: false
+                loading: false,
+                success: true
             }
         case 'FAIL_TO_FETCH_WISHLIST':
             return {
                 ...state,
                error: action.error,
                wishlist: [],
-               loading: false
+               loading: false,
+               success: false
             }
         default:
             return state

@@ -4,6 +4,7 @@ import Book from '../../assets/img/little.png'
 import backgroundImg from '../../assets/img/2.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
 
 const HomePageCarosul = (props) => {
     return (
@@ -17,8 +18,9 @@ const HomePageCarosul = (props) => {
                             <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
                                     <use xlinkHref={`${Icon}#icon-book`}></use>
                                 </svg>Read</button>
-                            <div className="main__carosoul__wishlist" >
-                                <FontAwesomeIcon icon={faHeart} style={{color: 'red', fontSize: '3rem'}} />
+                            <div className="main__carosoul__wishlist">
+                            {props.wishlist !== -1 ? <FontAwesomeIcon onClick={() => props.handler(props.id)} icon={fasHeart}  style={{color: 'red', fontSize: '3rem', cursor: 'pointer'}}  />:
+                            <FontAwesomeIcon onClick={() => props.handler(props.id)} icon={faHeart}  style={{color: 'red', fontSize: '3rem', cursor: 'pointer'}} />}
                             </div>
                         </div>
                         <p>{props.shortDescription}</p>
