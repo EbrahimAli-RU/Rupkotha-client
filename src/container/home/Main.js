@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from '../../utils/axios/axios'
 import BookCard from '../../component/bookCard/BookCard';
 import HomePageCarosul from '../../component/homePagecarosul/HomePageCarosul'
-import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Navigation from '../../layout/Navigation';
@@ -12,7 +11,6 @@ import DotSpinner from '../../component/spinner/DotSpinner';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import * as action from '../../redux/action/index'
-
 
 const responsive = {
   superLargeDesktop: {
@@ -75,6 +73,12 @@ const Main = () => {
         if(node) observer.current.observe(node)
     }, [book])
 
+    // const CustomLeftArrow = ({ onClick }) => (
+    //     <svg className="btn__svg custom-left-arrow">
+    //         <use xlinkHref={`${Icon}#icon-circle-left`}></use>
+    //     </svg>
+    //     // <i onClick={() => onClick()} className="custom-left-arrow" />
+    //   );
     //FTECHING CAROSUL ITEMS
     useEffect(() => {
         axios.get('/book/carosul').then(res => {

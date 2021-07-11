@@ -13,9 +13,6 @@ const Profile = (props) => {
                     {props.isDisplay ?
                         <a href={props.link}>
                             <div className='profile__user__edit-button__div'>
-                                {/* <svg className='profile__user__edit-button' >
-                                    <use xlinkHref={`${Icon}#icon-pencil`}></use>
-                                </svg> */}
                                 <FontAwesomeIcon icon={faUserEdit} color='black' />
                             </div>
                         </a> : null }

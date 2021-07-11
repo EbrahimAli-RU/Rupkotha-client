@@ -22,7 +22,7 @@ const SelectNewProfileImg = ( props ) => {
     }, [])
 
     const selectProfilePicHandler = (name) => {
-        dispatch(action.photoHandler(name))
+        dispatch(action.userInputHandler('photo', name))
         console.log(name)
         props.history.push('/profile/create')
     }

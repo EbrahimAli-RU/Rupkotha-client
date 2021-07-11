@@ -1,55 +1,40 @@
 import React, {useState, useEffect} from 'react';
-import axios from '../../utils/axios/axios'
+import { useDispatch, useSelector} from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import axios from '../../utils/axios/axios'
 import AuthInput from '../../component/authInput/AuthInput';
 import SecondInput from '../../component/authInput/SecondInput';
 import Button from '../../component/button/Button';
 import Profile from '../../component/profileTitle/Profile';
 import Spinner from '../../component/Spinner'
 import Modal from '../../component/Modal';
-
-const singleProfile ={
-    photo: '',
-    name: '',
-    age: '',
-    language: '',
-    interest: []
-}
+import Navigation from '../../layout/Navigation';
+import * as action from '../../redux/action/index'
 
 const EditSingleProfile = ( props ) => {
-    const [profileData, setProfileData] = useState(singleProfile)
-    const [loading, setLoading] = useState(true)
-    const [link, setLink] = useState('')
     const [showModal, setShowModal] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState({})
     const [isCurrentProfileMessage, setIsCurrentProfileMesage] = useState('')
 
+    const dispatch = useDispatch();
     const id = props.location.pathname.split('/')[2]
+    const childProfile = useSelector(state => state.profile)
+
     useEffect(() => {
-        setLoading(true)
-        
-        axios.get(`/child/${id}`).then(res => {
-            const singleProfileCopy ={...singleProfile}
-            for(let key in singleProfileCopy) {
-                singleProfileCopy[key] = res.data.data.child[key]
-            }
-            setProfileData(singleProfileCopy)
-            let str=`${singleProfileCopy.interest[0]}`  
-            for(let i = 1; i<singleProfileCopy.interest.length ; i++) {
-               str = str.concat(`+${singleProfileCopy.interest[i]}`)
-            }
-            setLink(str)
-            setLoading(false)
-        }).catch(err => {
-            console.log(err.response)
-            setLoading(false)
-        })
-    },[])
+        if(!childProfile.check) {
+            dispatch(action.fetchChildProfile(id))
+            dispatch(action.redirectLinkHandler(props.location.pathname))
+            dispatch(action.isSubmittedHandler())
+        }
+    },[childProfile.child.isSumitted])
+
+    const dumyHandler = () => {}
 
     const inputHandler = (e) => {
         const {name, value} = e.target
-        const profileDataCopy = {...profileData}
-        profileDataCopy[name] = value
-        setProfileData(profileDataCopy)
+        dispatch(action.userInputHandler(name, value))
     }
 
     const showModalHandler = () => {
@@ -75,30 +60,49 @@ const EditSingleProfile = ( props ) => {
         })
     }
 
+    const updateProfileHandler = () => {
+        setLoading(true)
+        axios.patch(`/child/${childProfile.child._id}`, 
+            {name: childProfile.child.name,
+             photo: childProfile.child.photo,
+            age: childProfile.child.age,
+            language: childProfile.child.language,
+            interest: childProfile.child.interest }).then(res => {
+                props.history.push('/profile/edit')
+                setLoading(false)
+                
+        }).catch(err => {
+            console.log(err.response)
+            // setError(err.response.data)
+            setLoading(false)
+        })
+    }
+
     return (
         <>
+        {/* <Navigation /> */}
         <Modal show={showModal} id={id} deleteHandler={deleteprofileHandler}  closeHandler={closeModal}  />
-        { loading ? <Spinner show /> :
+        { childProfile.loading || loading ? <Spinner show /> :
         <div className='create__profile__wrapper'>
         <div className='create__profile__content'>
             <h2>Edit Profile</h2>
-            <Profile link='/profile/new' profile={profileData.photo} isDisplay={false} />
+            <Profile link='/profile/new' profile={childProfile.child.photo} handler={dumyHandler} isDisplay={false} />
             <AuthInput placeholder='Name'
                        type='text'
-                       valueof={profileData.name}
+                       valueof={childProfile.child.name}
                        handler={inputHandler}
                        name='name' />
             <AuthInput placeholder='Age'
                        type='number'
-                       valueof={profileData.age}
+                       valueof={childProfile.child.age}
                        handler={inputHandler}
                        name='age'/>
             <AuthInput placeholder='Language'
                        type='text'
-                       valueof={profileData.language}
+                       valueof={childProfile.child.language}
                        handler={inputHandler}
                        name='language'/>
-            <SecondInput link={`/profile/interest?i=${link}&n=false`} />
+            <SecondInput link={`/profile/interest?n=false`} numberOfInterest={childProfile.child.interest.length} />
             <div style={{height: '2rem', marginTop: '1rem'}}>
                 <p style={{fontSize: '1.2rem', color: 'red'}}>{isCurrentProfileMessage}</p>
             </div>
@@ -112,8 +116,8 @@ const EditSingleProfile = ( props ) => {
                 marginBottom: '-1.8rem',
                 fontWeight: 'bolder'
             }} onClick={showModalHandler}>Delete</button>
-            <Button text='Continue'/>
-            <a className='cancel__button display' href='/'>Cancel</a>
+            <Button text='Continue' handler={updateProfileHandler}/>
+            <Link className='cancel__button display' to='/profile/edit'>Cancel</Link>
         </div>
     </div>}
         </>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useLayoutEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux'
 import { withRouter } from 'react-router'
 import axios from '../../utils/axios/axios'
@@ -8,30 +8,30 @@ import InterestCard from '../../component/profileTitle/InterestCard';
 import * as action from '../../redux/action/index'
 import Spinner from '../../component/Spinner';
 import Navigation from '../../layout/Navigation';
+import { Link } from 'react-router-dom'
 
 const ProfileInterest = (props) => {
+    /////STATE
     const [interests, setInterest] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
+    ///////GETING DATA FROM REDUX
     const profile = useSelector(state => state.profile)
-
     const dispatch = useDispatch();
 
-
-    if(profile.photo === '' && props.location.search.split('&')[1] !== "n=false") {
+    ///////CHECKING IF USER RELOAD PAGE
+    if(profile.child.photo === '' && props.location.search.length === 0) {
         props.history.replace('/profile/new');
+    } else if(profile.child.photo === '' && props.location.search.length !== 0) {
+        props.history.replace('/profile/edit');
     }
-
+    
     useEffect(() => {
-        
-        let userInterest = [], userInterestStr
-        if( props.location.search !== "") {
-            userInterestStr = props.location.search.split('=')[1]
-            userInterest = userInterestStr.split('+')
-        }
-
+        ///////GETTING INTEREST WHEN USER EDIT A PROFILE
+        dispatch(action.checkHandler())
         axios.get('/interest').then(res => {  
             const interests =  res.data.data.interest.map(el => { 
-                return { inter: { ...el, selected: userInterest.includes(el.title) } 
-                }
+                return { inter: { ...el, selected: profile.child.interest.includes(el.title) } }
             })
             setInterest(interests)
         }).catch(err => {
@@ -40,6 +40,8 @@ const ProfileInterest = (props) => {
         return () => { setInterest([]) }
     }, [props.location.search])
     
+
+    //////HANDLING USER INTEREST LIKE:ADDING OR REMOVING FROM INTEREST LIST
     const interestHandler = (id, name) => {
         let interCopy = [...interests];
         interCopy.forEach(inte => {
@@ -49,26 +51,39 @@ const ProfileInterest = (props) => {
                 inte.inter.selected=false
             }
         })
-        const profileCopy = {...profile}
+        const profileCopy = {...profile.child}
         const addInterestCopy =profileCopy.interest
         let index = addInterestCopy.indexOf(name)
         index === -1 ? addInterestCopy.push(name) : addInterestCopy.splice(index, index + 1)
-        dispatch(action.interestHandler(addInterestCopy))
+        dispatch(action.userInputHandler('interest', addInterestCopy))
     }
 
+    //////CREATING NEW PROFIE
     const createProfileHandler = () => {
-        axios.post('/child/add-child', {
-            ...profile
-        }).then(res => {
-            console.log(res.data)
-            props.history.push('/select/profile')
-        }).catch(err => {
-            console.log(err.response)
-        })
+        if(profile.isSubmitted) {
+            props.history.replace(profile.redirectLink);
+        } else {
+            setLoading(true)
+            setTimeout(() => {
+                axios.post('/child/add-child', {
+                    ...profile.child
+                }).then(res => {
+                    props.history.push('/select/profile')
+                    setLoading(false)
+                }).catch(err => {
+                    console.log(err.response)
+                    setLoading(false)
+                })
+            }, 5000)
+        }
+        
     }
+
+    //////RENDERING
     return (
         <>
-            {interests.length === 0 ? <Spinner show /> :
+            
+            {interests.length === 0 || loading ? <Spinner show /> :
             <>
             <Navigation />
             <ProfileTitle title='Interests' />
@@ -90,7 +105,7 @@ const ProfileInterest = (props) => {
                 <div style={{width: '36rem', display:'flex', justifyContent: 'center'}}>
                     <Button text='Continue' handler={createProfileHandler} />
                 </div>
-                <a className='cancel__button display' href='/'>Cancel</a>
+                <Link className='cancel__button display' to='/profile/new'>Cancel</Link>
             </div>
         </div></>}
         </>
