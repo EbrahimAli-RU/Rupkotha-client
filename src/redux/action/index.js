@@ -1,9 +1,9 @@
 export { 
-    photoHandler, 
-    nameHandler, 
-    ageHandler, 
-    languageHandler, 
-    interestHandler } from './profile'
+    userInputHandler, 
+    fetchChildProfile,
+    isSubmittedHandler,
+    redirectLinkHandler,
+    checkHandler } from './profile'
 
 export {
     fetchWishlist
