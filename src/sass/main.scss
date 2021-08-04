@@ -9,6 +9,8 @@
 @import 'base/reset';
 
 //COMPONENT
+@import 'component/subscription/subscription.scss';
+@import 'component/subscription/subscriptionPackage.scss';
 @import 'component/modal';
 @import 'component/spinner/spinner';
 @import 'component/spinner';
@@ -29,6 +31,7 @@
 @import 'layout/navigation';
 
 //PAGES
+@import 'pages/account/account.scss';
 @import 'pages/viewMore/viewMore';
 @import 'pages/readbook/readBook';
 @import 'pages/wishlist';

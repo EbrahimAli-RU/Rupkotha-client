@@ -9,15 +9,17 @@ const BookCard = (props) => {
     return (
         <>
             <div className={`bookCard__wrapper width${props.width}`} >
-            <Link to={props.link}><img className='bookCard__wrapper__img' src={`http://localhost:8000/${props.book}`} alt='book' /></Link>
+            <a href={props.link}><img className='bookCard__wrapper__img' src={`http://localhost:8000/${props.book}`} alt='book' /></a>
                 <div className="main__carosoul__wishlist" style={{position: 'absolute', left: '2rem', bottom: '2rem'}} >
                     {props.wishlist !== -1 ? <FontAwesomeIcon onClick={() => props.handler(props.id, props.category)} icon={fasHeart}  style={{color: 'red', fontSize: '2.5rem', cursor: 'pointer'}}  />:
                     <FontAwesomeIcon onClick={() => props.handler(props.id, props.category)} icon={faHeart}  style={{color: 'red', fontSize: '2.5rem', cursor: 'pointer'}} />}
                 </div>
                 <div className="main__carosoul__wishlist" style={{position: 'absolute', right: '2rem', bottom: '2rem'}} >
-                    <svg className="nav__items__icon">
-                        <use xlinkHref={`${Icon}#icon-book`}></use>
-                    </svg>
+                    <Link to='/read'>
+                        <svg className="nav__items__icon">
+                            <use xlinkHref={`${Icon}#icon-book`}></use>
+                        </svg>
+                    </Link>
                 </div>
             </div>
         </>

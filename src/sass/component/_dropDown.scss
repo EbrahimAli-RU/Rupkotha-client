@@ -79,4 +79,11 @@
         display: block;
       }
   }
- 
+
+  .react-multiple-carousel__arrow {
+      z-index: 10;
+      right: calc(2% + 1px);
+  }
+ .react-multiple-carousel__arrow--left {
+    left: calc(2% + 1px);
+ }

@@ -1,5 +1,7 @@
 .error {
     display: flex;
+    left: 50%;
+    transform: translateX(-50%);
     justify-content: space-between;
     align-items: center;
     top: 5rem;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import Icon from '../../assets/img/sprite.svg'
 import Book from '../../assets/img/little.png'
 import backgroundImg from '../../assets/img/2.jpg'
@@ -14,10 +15,12 @@ const HomePageCarosul = (props) => {
                     <div className='main__carosoul__left__div'>
                         <h1>{props.title}</h1>
                         <div>
-                            <button className='btn btn-read'> 
-                            <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
+                            <Link to='/read'>
+                                <button className='btn btn-read'> 
+                                <svg className="nav__items__icon" style={{marginRight: '1rem', fill: 'white'}}>
                                     <use xlinkHref={`${Icon}#icon-book`}></use>
                                 </svg>Read</button>
+                            </Link>
                             <div className="main__carosoul__wishlist">
                             {props.wishlist !== -1 ? <FontAwesomeIcon onClick={() => props.handler(props.id)} icon={fasHeart}  style={{color: 'red', fontSize: '3rem', cursor: 'pointer'}}  />:
                             <FontAwesomeIcon onClick={() => props.handler(props.id)} icon={faHeart}  style={{color: 'red', fontSize: '3rem', cursor: 'pointer'}} />}

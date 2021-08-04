@@ -4,7 +4,7 @@ import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
 const SecondInput = (props) => {
     return (
-        <div className='second__input'>
+        <div className={props.width ? 'second__input borderAll width100' : 'second__input borderAll width80'}>
         <div className='second__input-title'>
             <p id='second__input__para'>Interests</p>
             <p className='second__input__interest' >{props.numberOfInterest} Selected</p>

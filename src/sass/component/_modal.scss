@@ -12,8 +12,8 @@
 
     &__content {
         @include center-element(50%);
-        width: 30rem;
-        height: 13rem;
+        // width: 30rem;
+        // height: 13rem;
         background-color: #fff;
         box-shadow: 0 2rem 4rem rgba(0,0,0, .2);
         border-radius: 2px;
@@ -21,15 +21,13 @@
         transition: all .1s .1s;
     }
     &__question {
-        margin-left: 2rem;
-        padding-top: 2rem;
+        padding: 2.5rem 5rem 2rem 1rem;
         font-size: 1.8rem;
     }
     &__button {
-        position: relative;
-        top: 3.6rem;
+        padding-bottom: 1rem;
         display: inline-block;
-        left: 9rem;
+        float: right;
     }
 
     &__btn {
