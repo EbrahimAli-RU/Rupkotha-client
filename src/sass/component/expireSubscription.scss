@@ -1,0 +1,16 @@
+.expire__subscription {
+    @include center-element(50%);
+    color: black;
+    &__title {
+        text-align: center;
+        font-size: 4.2rem;
+        font-family: 'Lobster', sans-serif;
+        line-height: 90%;
+    }
+
+    &__message {
+        text-align: center;
+        font-size: 1.8rem;
+        line-height: 96%;
+    }
+}
