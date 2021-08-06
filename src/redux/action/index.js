@@ -15,6 +15,7 @@ export {
 } from './ui'
 
 export {
-    tokenHandler
+    tokenHandler,
+    saveChildHandler
 } from './user'
 

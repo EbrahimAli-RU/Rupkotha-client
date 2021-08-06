@@ -81,7 +81,16 @@ const EditSingleProfile = ( props ) => {
     return (
         <>
         {/* <Navigation /> */}
-        <Modal show={showModal} id={id} deleteHandler={deleteprofileHandler}  closeHandler={closeModal}  />
+        <Modal show={showModal} id={id} deleteHandler={deleteprofileHandler}  closeHandler={closeModal}  >
+            <div style={{backgroundColor: 'white', }}>
+                <p className='popup__question'>Do you Want to Delete?</p>
+                <div className='popup__button'>
+                    <button onClick={closeModal} className='popup__btn'>CANCEL</button>
+                    <button onClick={deleteprofileHandler} style={{color: 'red'}} className='popup__btn'>DELETE</button>
+                </div>
+            </div>
+
+        </Modal>
         { childProfile.loading || loading ? <Spinner show /> :
         <div className='create__profile__wrapper'>
         <div className='create__profile__content'>

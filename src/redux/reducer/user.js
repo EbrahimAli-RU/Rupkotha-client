@@ -1,6 +1,6 @@
 const initialState = {
     token: '',
-    child: {},
+    child: null,
 }
 
 const reducer = (state = initialState, action) => {
