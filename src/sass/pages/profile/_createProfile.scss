@@ -19,3 +19,70 @@
         }
     }
 }
+
+.apply__cuppon {
+    &__wrapper {
+        @include center-element(30%);
+    }
+    &__title__back__wrapper {
+        width: 94%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &__back_btn {
+        line-height: 0;
+        padding: 1.7rem;
+        cursor: pointer;
+        color: black;
+        border-radius: .2rem;
+        &:hover {  
+            background-color: rgb(226, 232, 240);
+        }
+    }
+    &__title {
+        margin-left: 3rem;
+        font-family: 'Lobster', sans-serif;
+        font-size: 2rem;
+        color: black;
+    }
+    &__input__box {
+        //background-color: black;
+        border: 2px solid darkgrey;
+        width: 35rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem 0 4rem;
+        border-radius: .4rem;
+    }
+
+    &__input__field {
+        width: 70%;
+        padding: 1.6rem 1rem 1.6rem 2rem;
+        border: none;
+        font-size: 1.8rem;
+        outline: none;
+        &::placeholder {
+            font-size: 1.9rem;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+    &__apply__button {
+        margin-right: 1rem;
+        border: none;
+        outline: none;
+        padding: 1rem 2.5rem;
+        background-color: crimson;
+        border-radius: 10rem;
+        color: white;
+        font-weight: bolder;
+
+        &:hover {
+            background-color: darken(crimson, 5%);
+        }
+    }
+}
