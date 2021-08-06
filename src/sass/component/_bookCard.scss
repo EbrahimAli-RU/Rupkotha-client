@@ -18,8 +18,11 @@
     &:hover &__wrapper:not(:hover) {
         transform: scale(.95);
     }
+}
 
-    
+.card__bw__position {
+    position: absolute;
+    bottom: 2rem;
 }
 
 

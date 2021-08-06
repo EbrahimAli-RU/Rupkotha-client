@@ -1,6 +1,6 @@
 .search__book {
     &__wrapper {
-        margin-top: 7rem;
+        padding-top: 7rem;
         height: 100vh;
         background-color: #f9fafd;
     }
@@ -27,6 +27,7 @@
 
         &:hover {
             background-color: darken($color: #e6f5fe, $amount: 20%);
+            color: white;
         }
     }
     &__title__wrapper {

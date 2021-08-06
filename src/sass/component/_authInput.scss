@@ -1,11 +1,11 @@
 .auth__input {
         margin: 1rem 0;
-        width: 80%;
     &__custom-field {
         position: relative;
         font-size: 1.4rem;
         width: 100%;
         input {
+            //background-color: black;
             font-family: 'Roboto', sans-serif;
             border: none;
             border: 2px solid #ddd;
@@ -14,7 +14,7 @@
             outline: none;
             font-size: 1.4rem;
             color: var(--color-Grey-dark-2);
-            padding: 1.4rem .8rem;
+            padding: 1.4rem 1.4rem;
             width: 100%;
             transition: border .2s ease;
             transition-delay: .1s;

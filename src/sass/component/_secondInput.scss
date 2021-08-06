@@ -1,9 +1,9 @@
 .second__input {
-    width: 80%; 
+    //width: 80%; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    border: 2px solid #ddd;
+    
     border-radius: 3px;
     &-title {
         margin-left: 1rem;
@@ -19,4 +19,12 @@
 
 #second__input__para {
     margin: 2px 0 0px 0;
+}
+
+.borderAll {
+    border: 2px solid #ddd;
+}
+
+.borderbottom {
+    border-bottom: 2px solid #ddd;
 }

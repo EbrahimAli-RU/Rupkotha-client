@@ -1,6 +1,8 @@
 import React from 'react';
 import Icon from '../../assets/img/sprite.svg'
 import profileImg from '../../assets/img/profile.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
 
 const Profile = (props) => {
     return (
@@ -11,9 +13,7 @@ const Profile = (props) => {
                     {props.isDisplay ?
                         <a href={props.link}>
                             <div className='profile__user__edit-button__div'>
-                                <svg className='profile__user__edit-button' >
-                                    <use xlinkHref={`${Icon}#icon-home`}></use>
-                                </svg>
+                                <FontAwesomeIcon icon={faUserEdit} color='black' />
                             </div>
                         </a> : null }
                 </div>

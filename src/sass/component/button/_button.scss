@@ -18,6 +18,11 @@
         background-color: var(--color-Primary-dark);
         color: $color-white;
     }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: darkgray;
+    }
 }
 #btn-read {
     width: 20rem;
