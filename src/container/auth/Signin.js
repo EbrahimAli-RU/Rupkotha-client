@@ -57,7 +57,7 @@ const Signin = (props) => {
     ///IT CLOSE ERROR MESSAGE AFTER 4.2s
     const vanisErrorHandler = () => { setIsShow({ error: false, message: '' }) }
 
-    //////RENDERING
+    //////RENDER
     return (
         <div className='auth__wrapper signin'>
             <Error show={isShow.error} message={isShow.message} handler={vanisErrorHandler} />

@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import axios from '../../utils/axios/axios'
 import { Redirect } from 'react-router-dom'
 
 const Logout = () => {
@@ -12,8 +13,13 @@ const Logout = () => {
     }
 
     useEffect(() => {
-        delateAllCookie()
-        localStorage.clear()
+        axios.get('/user/logout').then(res => {
+            delateAllCookie()
+            localStorage.clear()
+        }).catch(err => {
+            console.log(err.response)
+        })
+        
     }, [])
     return <Redirect to='/' />
 };
