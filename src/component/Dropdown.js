@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import photo from '../assets/img/profile1.png'
+import { Link } from 'react-router-dom'
 import Icon from '../assets/img/sprite.svg'
 
 const Dropdown = () => {
@@ -35,13 +35,13 @@ const Dropdown = () => {
                             <img className='dropdown-content-profile' src={`http://localhost:8000/${currentProfile.photo}`} alt='profile' />
                             <p>{currentProfile.name}</p>
                         </div>
-                        <button className='dropdown-content-button'><a href="/select/profile">Change Profile</a></button>
-                        <a className='dropdown-content__link' href="/profile/edit">Edit Profile</a>
-                        <a className='dropdown-content__link' href="/account">Account</a>
-                        <a className='dropdown-content__link' href="/resource">Resources</a>
-                        <a className='dropdown-content__link' href="/billing">Billing</a>
-                        <a className='dropdown-content__link' href="/privacy-policy">Privacy Policy</a>
-                        <a className='dropdown-content__link' href="/logout">Logout</a>
+                        <button className='dropdown-content-button'><Link to="/select/profile">Change Profile</Link></button>
+                        <Link className='dropdown-content__link' to="/profile/edit">Edit Profile</Link>
+                        <Link className='dropdown-content__link' to="/account">Account</Link>
+                        <Link className='dropdown-content__link' to="/resource">Resources</Link>
+                        <Link className='dropdown-content__link' to="/billing">Billing</Link>
+                        <Link className='dropdown-content__link' to="/privacy-policy">Privacy Policy</Link>
+                        <Link className='dropdown-content__link' to="/logout">Logout</Link>
                     </div>
                 </>
             }
