@@ -114,7 +114,7 @@ const Main = () => {
                 </Carousel>
             }
             {book.length === 0 ? <DotSpinner /> :
-                <div style={{ width: '98%', margin: 'auto', scrollBehavior: 'smooth' }} >
+                <div style={{ width: '98%', margin: 'auto', scrollBehavior: 'smooth', paddingTop: '5rem' }} >
                     {book.map((el, i) => {
                         if ((i + 1) === book.length) {
                             return (
@@ -127,6 +127,7 @@ const Main = () => {
                                         {el.books.length < 5 ? <>
                                             {el.books.map((singleBook, i) =>
                                                 <BookCard
+                                                    title={singleBook.bookTitle}
                                                     wishlist={singleBook.isWishlisted}
                                                     link={`/book/${singleBook.id}?_channel=${singleBook.channel}`}
                                                     key={i}
@@ -139,6 +140,7 @@ const Main = () => {
                                                 responsive={responsive}>
                                                 {el.books.map((singleBook, i) =>
                                                     <BookCard
+                                                        title={singleBook.bookTitle}
                                                         wishlist={singleBook.isWishlisted}
                                                         link={`/book/${singleBook.id}?_channel=${singleBook.channel}`}
                                                         key={i}
@@ -163,6 +165,7 @@ const Main = () => {
                                         {el.books.length < 5 ? <>
                                             {el.books.map((singleBook, i) =>
                                                 <BookCard
+                                                    title={singleBook.bookTitle}
                                                     handler={wishlistHandler}
                                                     wishlist={singleBook.isWishlisted}
                                                     link={`/book/${singleBook.id}?_channel=${singleBook.channel}`}
@@ -175,6 +178,7 @@ const Main = () => {
                                                 responsive={responsive}>
                                                 {el.books.map((singleBook, i) =>
                                                     <BookCard
+                                                        title={singleBook.bookTitle}
                                                         handler={wishlistHandler}
                                                         wishlist={singleBook.isWishlisted}
                                                         key={i}

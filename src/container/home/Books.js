@@ -43,6 +43,7 @@ export default function Books(page, wishlistId, wishlistCategory, wishlistIsInse
                 }).then(res => {
                     setHasMore(res.data.data.book.length > 0)
                     setLoading(false)
+                    console.log(res.data.data.book)
                     /////FILTERING RESPONSE SO THAT NO DUPLICATE DATA IS PRESENT.
                     let ggg = res.data.data.book.map(el => {
                         return {

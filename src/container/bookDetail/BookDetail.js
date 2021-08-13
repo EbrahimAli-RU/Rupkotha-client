@@ -120,6 +120,7 @@ const BookDetail = (props) => {
                             <h2 className='book__detail__channel-title'><strong>{data.channelTitle}</strong></h2>
                             {channel.map(el =>
                                 <BookCard
+                                    title={el.bookTitle}
                                     key={el._id}
                                     link={`/book/${el._id}?_channel=${el.category}`}
                                     width='33'

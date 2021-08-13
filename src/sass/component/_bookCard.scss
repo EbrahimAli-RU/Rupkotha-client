@@ -6,6 +6,7 @@
         transition: all .2s ease-out;
         cursor: pointer;
         margin: 1rem 0;
+
         &__img {
             border-radius: 2rem;
             width: 96%;
@@ -25,4 +26,61 @@
     bottom: 2rem;
 }
 
+.tooltip.top .tooltip-arrow {
+    border-top-color: transparent;
+}
 
+.tooltip.top .tooltip-arrow {
+    border-top-color: transparent !important;
+}
+
+.arrow {
+    width: 4rem;
+}
+
+.dumy {
+    position: relative;
+
+    &::before,
+    &::after {
+        --scale: 0;
+        --arrow-size: 1.5rem;
+        --tooltip-color: white;
+        position: absolute;
+        z-index: 200;
+        left: 50%;
+        top: -2rem;
+        transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+        transition: 150ms transform ease-out;
+        transform-origin: bottom center;
+        
+    }
+    &::before {
+        --translate-y: calc(-100% - var(--arrow-size));
+        content: attr(data-tooltip);
+        width: 70%;
+        text-align: center;
+        background-color: var(--tooltip-color);
+        padding: 1rem .6rem;
+        border-radius: .4rem;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        color: black;
+    }
+    &::after {
+        content: '';
+        --translate-y: calc(-1* var(--arrow-size));
+        border: var(--arrow-size) solid transparent;
+        border-top-color: black ;
+        transform-origin: top center;
+        // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        --scale: 1;
+    }
+}
+
+.react-multi-carousel-list {
+    overflow: visible;
+}

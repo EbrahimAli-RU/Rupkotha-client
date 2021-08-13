@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import SubscriptionPackage from './subscriptionPackage/SubscriptionPackage';
@@ -8,9 +9,12 @@ import axios from '../../utils/axios/axios'
 
 const Subscription = (props) => {
     const [showCuppon, setShowCuppon] = useState(false)
+    const history = useHistory();
     const checkHandler = () => {
         console.log('OKKKK')
         axios.get('/avater/init', {}).then(res => {
+            window.location.replace(res.data.data.url)
+            //history.push(res.data.data.url)
             console.log(res)
             console.log(res.data)
         }).catch(err => {

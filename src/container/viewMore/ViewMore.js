@@ -90,6 +90,7 @@ const ViewMore = (props) => {
                         <div>
                             {book.map(el =>
                                 <BookCard
+                                    title={el.bookTitle}
                                     key={el._id}
                                     link={`/book/${el._id}?_channel=${el.category}`}
                                     width='25'
