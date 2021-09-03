@@ -1,17 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+import jwt_decoded from 'jwt-decode'
 import axios from '../../utils/axios/axios'
 import Icon from '../../assets/img/sprite.svg'
-import audio from '../../assets/audio/audio1.mp3'
+import { useSelector } from 'react-redux'
 import ExpireSubscription from '../../component/expireSubscription/ExpireSubscription';
 
 const ReadBook = () => {
+    const token = useSelector(state => state.user.token)
+    const decoded = jwt_decoded(token)
     const [pages, setPages] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [checkSubscription, setCheckSubscription] = useState(true)
+    const [checkSubscription, setCheckSubscription] = useState(false)
+    useLayoutEffect(() => {
+        axios.get(`/payment/premium-user/${decoded.id}`).then(res => {
+            console.log(res.data.data)
+            setCheckSubscription(res.data.data.premiumUser)
+        }).catch(err => {
+            setCheckSubscription(false)
+        })
+    }, [])
 
     useEffect(() => {
-        axios.get('/book/61052150d36f254048956fe1/read').then(res => {
-            setPages(res.data.data.pages.page.pages)
+        axios.get('/page/611f75d8f3ff4a4cbc3cbc0d').then(res => {
+            console.log(res.data.data.pages)
+            setPages(res.data.data.pages)
             setLoading(false)
         }).catch(err => {
             setLoading(false)
@@ -19,13 +31,13 @@ const ReadBook = () => {
         })
     }, [])
     const arr = pages
-    let currentLocation = 0;
+    let currentLocation = 1;
     let numOfPages = arr.length;
     let maxLocation = numOfPages
 
     const goNextPage = () => {
         let papers = document.querySelectorAll('.paper');
-        if (currentLocation < maxLocation) {
+        if (currentLocation < (maxLocation / 2)) {
             console.log(currentLocation);
             papers[currentLocation].classList.add('flipped')
             papers[currentLocation].style.zIndex = numOfPages + currentLocation;
@@ -40,8 +52,9 @@ const ReadBook = () => {
     }
 
     const goPrevPage = () => {
+        console.log(currentLocation)
         let papers = document.querySelectorAll('.paper');
-        if (currentLocation > 0) {
+        if (currentLocation > 1) {
             papers[currentLocation - 1].classList.remove('flipped')
             papers[currentLocation - 1].style.zIndex = 2 * numOfPages - currentLocation;
             currentLocation--;
@@ -52,6 +65,32 @@ const ReadBook = () => {
             }
         }
     }
+
+    const pageghh = [];
+    if (arr.length !== 0) {
+        for (let i = 1; i < arr.length; i = i + 2) {
+            pageghh.push(
+                <div key={i + 1} className='paper marginL marginR' style={{
+                    zIndex: `${arr.length - i}`,
+                }}  >
+                    <div className='front'>
+                        <div id='f1' className='front__content'>
+                            <img style={{ width: '100%', height: '100%' }}
+                                src={`http://localhost:8000/${arr[i].page}`} alt='ggg' />
+                        </div>
+                    </div>
+                    <div className='back'>
+                        <div id='b1' className='back__content'>
+                            <img style={{ width: '100%', height: '100%', }}
+                                src={`http://localhost:8000/${i + 1 < arr.length ? arr[i + 1].page : null}`} alt='ggg' />
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+
     return (
         <>
             {!checkSubscription ? <ExpireSubscription /> :
@@ -65,25 +104,25 @@ const ReadBook = () => {
                         </button>
                         {loading ? <p>Loading......</p> :
                             <div className='book' id='book'>
-                                {arr.map((el, i) => (
-                                    <div key={i + 1} className='paper marginL marginR' style={{
-                                        zIndex: `${arr.length - i}`,
-                                    }}  >
-                                        <div className='front'>
-                                            <div id='f1' className='front__content'>
-                                                <img style={{ width: '100%', height: '100%' }}
-                                                    src={`http://localhost:8000/${el}`} alt='ggg' />
-                                            </div>
-                                        </div>
 
-                                        <div className='back'>
-                                            <div id='b1' className='back__content'>
-                                                <img style={{ width: '100%', height: '100%', }}
-                                                    src={`http://localhost:8000/${el}`} alt='ggg' />
-                                            </div>
+                                <div className='paper marginL marginR flipped' style={{
+                                    zIndex: `${arr.length - 0}`,
+                                }}  >
+                                    <div className='front'>
+                                        <div id='f1' className='front__content'>
+                                            <img style={{ width: '100%', height: '100%' }}
+                                                src={`http://localhost:8000/${arr[0].page}`} alt='ggg' />
                                         </div>
                                     </div>
-                                ))}
+                                    <div className='back'>
+                                        <div id='b1' className='back__content'>
+                                            <img style={{ width: '100%', height: '100%', }}
+                                                src={`http://localhost:8000/${arr[0].page}`} alt='ggg' />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {pageghh}
                                 <div className="paper1" id='p1'></div>
                                 <div className="paper1" id='p2'></div>
                                 <div className="paper1" id='p3'></div>
@@ -103,7 +142,8 @@ const ReadBook = () => {
                     </div>
                     <div className='read__book__audio'>
                         <audio className='audio' controls>
-                            <source src={audio} />
+                            {loading ? <p>Loading......</p> :
+                                <source src={`http://localhost:8000/${arr[1].audio}`} />}
                         </audio>
                     </div>
 

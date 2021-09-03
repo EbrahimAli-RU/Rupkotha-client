@@ -4,7 +4,6 @@ import Icon from '../../assets/img/sprite.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
-// import Tooltip from '../tooltip/Tooltip';
 
 const BookCard = (props) => {
     return (
@@ -13,7 +12,7 @@ const BookCard = (props) => {
             {/* <Tooltip /> */}
             <div className={`bookCard__wrapper width${props.width}`} >
                 <a href={props.link}>
-                    <div className='dumy' data-tooltip={props.title}>
+                    <div className='dumy' data-tooltip={props.title} tit='OKKKK'>
                         <img className='bookCard__wrapper__img'
                             src={`http://localhost:8000/${props.book}`} alt='book' />
                     </div>

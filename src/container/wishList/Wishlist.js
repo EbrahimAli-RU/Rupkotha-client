@@ -31,6 +31,7 @@ const Wishlist = () => {
             <BookCard key={el._id}
                 link={`/book/${el.bookId._id}?_channel=${el.bookId.category[0]}`}
                 book={el.bookId.cardPhoto}
+                title={el.bookId.shortDescription}
                 width='25' />)
     }
 

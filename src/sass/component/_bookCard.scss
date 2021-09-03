@@ -10,6 +10,9 @@
         &__img {
             border-radius: 2rem;
             width: 96%;
+            background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
         }
         &:hover {
                 transform: scale(1.05);
@@ -58,7 +61,8 @@
     &::before {
         --translate-y: calc(-100% - var(--arrow-size));
         content: attr(data-tooltip);
-        width: 70%;
+        width: 90%;
+        font-size: 1.4rem;
         text-align: center;
         background-color: var(--tooltip-color);
         padding: 1rem .6rem;
@@ -84,3 +88,4 @@
 .react-multi-carousel-list {
     overflow: visible;
 }
+

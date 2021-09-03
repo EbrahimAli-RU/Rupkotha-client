@@ -11,15 +11,15 @@
             
             p {
                 font-size: 2.2rem;
-                font-family: 'Open Sans';
-                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
                 margin-left: 2rem;
             }
 
             a:link,
             a:visited {
-                font-family: 'Open Sans';
-                font-weight: 400;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
                 margin-right: 2rem;
                 transition: all .2s;
             }
@@ -56,4 +56,10 @@
 
 .owl-next {
     right: 2rem;
+}
+
+.center__main__spinner {
+    @include center-element(50%);
+    width: 5rem;
+    height: 5rem;
 }

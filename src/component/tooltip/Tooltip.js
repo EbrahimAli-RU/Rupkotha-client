@@ -2,7 +2,7 @@ import React from 'react';
 
 const Tooltip = () => {
     return (
-        <div className='tooltip' data-tooltip="Thinking Cat"></div>
+        <div > <h1>Heading</h1><p>Some text</p></div>
     );
 };
 
