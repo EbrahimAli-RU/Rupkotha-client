@@ -27,6 +27,7 @@ import Wishlist from './container/wishList/Wishlist';
 import * as action from './redux/action/index'
 
 import './sass/main.scss'
+import AdminMain from './admin/layout/Main'
 
 function App() {
   ///STATE
@@ -64,6 +65,7 @@ function App() {
   if (tokenFromRedux.token === '') {
     routes = (
       <Switch>
+        <Route path='/admin' component={AdminMain} />
         <Route path='/activate/:token' exact component={Activation} />
         <Route path='/forgot-password' component={ForgotPassword} />
         <Route path='/register' exact component={Signup} />
@@ -78,6 +80,7 @@ function App() {
     console.log('ELSE IF NULL')
     routes = (
       <Switch>
+        <Route path='/admin' component={AdminMain} />
         <Route path='/activate/:token' exact component={Activation} />
         <Route path='/forgot-password' component={ForgotPassword} />
         <Route path='/select/profile' component={SelectProfile} />
@@ -95,6 +98,7 @@ function App() {
     console.log('ELSE IF NOT NULL')
     routes = (
       <Switch>
+        <Route path='/admin' component={AdminMain} />
         <Route path='/account' component={Account} />
         <Route path='/activate/:token' exact component={Activation} />
         <Route path='/book/channel' component={ViewMore} />

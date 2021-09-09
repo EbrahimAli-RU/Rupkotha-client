@@ -35,21 +35,18 @@ const ViewMore = (props) => {
     useEffect(() => {
         setLoading(true)
         if (wishlist.success) {
-            setTimeout(() => {
-                axios.get(`/book/channel${props.location.search}&l=5&p=${page}`).then(res => {
-                    setHasmore(res.data.data.channel.length > 0)
-                    let channelCopy = [...res.data.data.channel]
-                    channelCopy = channelCopy.map(el => { return { ...el, isWishlisted: wishlist.wishlist.findIndex(wish => wish.bookId._id === el._id) } })
-                    let books = [...book, ...channelCopy]
-                    books = [...new Map(books.map(item => [item["_id"], item])).values()]
-                    setBook(books)
-                    console.log(books)
-                    setLoading(false)
-                }).catch(err => {
-                    setLoading(false)
-                    console.log(err.response)
-                })
-            }, 2000)
+            axios.get(`/book/channel${props.location.search}&l=5&p=${page}`).then(res => {
+                setHasmore(res.data.data.channel.length > 0)
+                let channelCopy = [...res.data.data.channel]
+                channelCopy = channelCopy.map(el => { return { ...el, isWishlisted: wishlist.wishlist.findIndex(wish => wish.bookId._id === el._id) } })
+                let books = [...book, ...channelCopy]
+                books = [...new Map(books.map(item => [item["_id"], item])).values()]
+                setBook(books)
+                setLoading(false)
+            }).catch(err => {
+                setLoading(false)
+                console.log(err.response)
+            })
         }
     }, [page, wishlist.success])
 
