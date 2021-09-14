@@ -1,48 +1,49 @@
 @import "~bootstrap/scss/bootstrap";
 //UTILS
-@import 'utils/function';
-@import 'utils/mixin';
-@import 'utils/utiliti';
-@import 'utils/variable';
+@import "utils/function";
+@import "utils/mixin";
+@import "utils/utiliti";
+@import "utils/variable";
 
 //BASE
-@import 'base/reset';
+@import "base/reset";
 
 //COMPONENT
-@import 'component/tooltip/tooltip';
-@import 'component/expireSubscription.scss';
-@import 'component/subscription/subscription.scss';
-@import 'component/subscription/subscriptionPackage.scss';
-@import 'component/modal';
-@import 'component/spinner/spinner';
-@import 'component/spinner';
-@import 'component/error';
-@import 'component/homePageCarosul';
-@import 'component/searchBox';
-@import 'component/secondInput';
-@import 'component/dropDown';
-@import 'component/authInput';
-@import 'component/button/button';
-@import 'component/button/cancelbutton';
-@import 'component/bookCard';
-@import 'component/profile/profileImage';
-@import 'component/profile/profileTitle';
-@import 'component/profile/profile';
+@import "component/searchingCard/searchingCard";
+@import "component/tooltip/tooltip";
+@import "component/expireSubscription.scss";
+@import "component/subscription/subscription.scss";
+@import "component/subscription/subscriptionPackage.scss";
+@import "component/modal";
+@import "component/spinner/spinner";
+@import "component/spinner";
+@import "component/error";
+@import "component/homePageCarosul";
+@import "component/searchBox";
+@import "component/secondInput";
+@import "component/dropDown";
+@import "component/authInput";
+@import "component/button/button";
+@import "component/button/cancelbutton";
+@import "component/bookCard";
+@import "component/profile/profileImage";
+@import "component/profile/profileTitle";
+@import "component/profile/profile";
 
 //LAYOUT
-@import 'layout/navigation';
+@import "layout/navigation";
 
 //PAGES
-@import 'pages/account/account.scss';
-@import 'pages/viewMore/viewMore';
-@import 'pages/readbook/readBook';
-@import 'pages/wishlist';
-@import 'pages/bookDetail';
-@import 'pages/selectProfile';
-@import 'pages/auth/signin';
-@import 'pages/home/home';
-@import 'pages/profile/selectNewProfileImg';
-@import 'pages/profile/createProfile';
-@import 'pages/profile/profileInterest';
-@import 'pages/searchBook/searchBook';
-@import 'pages/bookDetail/bookDetail';
+@import "pages/account/account.scss";
+@import "pages/viewMore/viewMore";
+@import "pages/readbook/readBook";
+@import "pages/wishlist";
+@import "pages/bookDetail";
+@import "pages/selectProfile";
+@import "pages/auth/signin";
+@import "pages/home/home";
+@import "pages/profile/selectNewProfileImg";
+@import "pages/profile/createProfile";
+@import "pages/profile/profileInterest";
+@import "pages/searchBook/searchBook";
+@import "pages/bookDetail/bookDetail";

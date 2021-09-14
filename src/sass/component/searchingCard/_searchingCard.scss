@@ -1,0 +1,46 @@
+.searching_card {
+  &_container {
+    margin-top: 4rem;
+    width: 23%;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    display: inline-block;
+    margin-right: 2rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover::before {
+      background-color: white;
+      bottom: 0;
+    }
+    &::before {
+      //   display: none;
+      //   position: fixed;
+      z-index: 9;
+      content: "";
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      transition: all 0.3s;
+      transform-origin: bottom;
+    }
+  }
+  &_photo {
+    width: 90%;
+    margin: auto;
+    padding: 1rem 0;
+    img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+  }
+  &_detail {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+  }
+}

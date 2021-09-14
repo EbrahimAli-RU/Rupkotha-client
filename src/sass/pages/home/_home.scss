@@ -1,65 +1,67 @@
 .main {
-    &__books {
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-        scroll-behavior: smooth;
-        // margin: 6rem 0;
+  &__books {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    scroll-behavior: smooth;
+    // margin: 6rem 0;
 
-        &__category {
-            display: flex;
-            justify-content: space-between;
-            
-            p {
-                font-size: 2.2rem;
-                font-family: 'Poppins', sans-serif;
-                font-weight: 500;
-                margin-left: 2rem;
-            }
+    &__category {
+      display: flex;
+      justify-content: space-between;
 
-            a:link,
-            a:visited {
-                font-family: 'Poppins', sans-serif;
-                font-weight: 500;
-                margin-right: 2rem;
-                transition: all .2s;
-            }
-            a:hover {
-                transform: translateY(-2px);
-                color: var(--color-primary-dark-1);
-            }
-        }
+      p {
+        font-size: 2.2rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        margin-left: 2rem;
+      }
+
+      a:link,
+      a:visited {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        margin-right: 2rem;
+        transition: all 0.2s;
+      }
+      a:hover {
+        transform: translateY(-2px);
+        color: var(--color-primary-dark-1);
+      }
     }
-    
+  }
 }
-.owl-carousel .owl-nav button.owl-prev, 
+.owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next {
+  background-color: transparent;
+  &:hover {
     background-color: transparent;
-    &:hover {
-        background-color: transparent;
-        color: black;
-    }
+    color: black;
+  }
 }
-.owl-prev, .owl-next {
-    width: 5rem;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.owl-prev,
+.owl-next {
+  width: 5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 
-    span {
-        font-size: 6rem;
-    }
+  span {
+    font-size: 6rem;
+  }
 }
 
 .owl-prev {
-    left: 2rem;
+  left: 2rem;
 }
 
 .owl-next {
-    right: 2rem;
+  right: 2rem;
 }
 
 .center__main__spinner {
-    @include center-element(50%);
-    width: 5rem;
-    height: 5rem;
+  position: absolute;
+  left: 46%;
+  top: 46%;
+  width: 5rem;
+  height: 5rem;
 }
