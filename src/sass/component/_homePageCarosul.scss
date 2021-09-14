@@ -16,7 +16,7 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        height: 60vh;
+        height: 69vh;
 
         &__background-img {
             background-repeat: no-repeat;
@@ -27,7 +27,7 @@
             left: 0;
             top: 0;
             width: 100%;
-            height: 60vh;
+            height: 69vh;
         }
 
         &__content {
@@ -37,18 +37,19 @@
             position: relative;
         }
         &__image {
-            width: 30rem !important;
-            margin-right: 20rem;
+            width: 25rem !important;
+            height: 32rem;
+            margin-right: 23rem;
             margin-bottom: -7rem;
-            margin-top: 7rem;
+            margin-top: 10rem;
             z-index: 10;
         }
 
         &__left__div {
             background-color: transparent;
-            margin-left: 9rem;
+            margin-left: 13rem;
             margin-top: 9%;
-            width: 40%;
+            width: 35%;
             height: 60%;
             z-index: 10;
         }
@@ -62,11 +63,28 @@
             border-radius: 50%;
             line-height: 0;
             transform: scale(1);
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 3px 6px -1px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
             transition: all .2s ease-out;
             &:hover {
                 transform: scale(1.1);
             }
         }
+    }
+}
+
+.read__button {
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    background-color: darken( rgb(71, 138, 240), 5%);
+    padding: 1rem 4rem;
+    border-radius: 10rem;
+    color: white;
+    font-size: 1.7rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    transition: all .1s ease-out;
+    &:hover {
+        background-color: lighten( rgb(71, 138, 240), 5%);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 4px -1px, rgba(0, 0, 0, 0.3) 0px 1px 2px -1px;
     }
 }

@@ -7,11 +7,15 @@ import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
 
 const BookCard = (props) => {
     return (
+        // 
         <>
+            {/* <Tooltip /> */}
             <div className={`bookCard__wrapper width${props.width}`} >
                 <a href={props.link}>
-                    <img className='bookCard__wrapper__img'
-                        src={`http://localhost:8000/${props.book}`} alt='book' />
+                    <div className='dumy' data-tooltip={props.title} tit='OKKKK'>
+                        <img className='bookCard__wrapper__img'
+                            src={`http://localhost:8000/${props.book}`} alt='book' />
+                    </div>
                 </a>
                 <div className="main__carosoul__wishlist card__bw__position left">
                     {props.wishlist !== -1 ?
@@ -34,3 +38,14 @@ const BookCard = (props) => {
 };
 
 export default BookCard;
+
+
+
+
+{/* <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Tooltip!</Tooltip>}>
+  <span className="d-inline-block">
+    <Button disabled style={{ pointerEvents: 'none' }}>
+      Disabled button
+    </Button>
+  </span>
+</OverlayTrigger> */}

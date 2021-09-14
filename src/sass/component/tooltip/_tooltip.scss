@@ -1,0 +1,3 @@
+.tooltip::before {
+    content: attr(data-tooltip);
+}

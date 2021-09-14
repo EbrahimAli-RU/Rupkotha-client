@@ -1,14 +1,15 @@
 .subscription__package {
     margin-right: 1rem;
-    width: 14rem;
+    width: 16rem;
     border: 2px solid var(--color-Grey-dark-2);
     text-align: center;
     border-radius: 1.2rem;
+    // border: 3px solid transparent;
 
     &__category {
         overflow: hidden;
         width: 100%;
-        background-color: crimson;
+        // background-color: crimson;
         color: white;
         text-align: center;
         padding: 1.4rem 0 .8rem 0;
@@ -21,13 +22,13 @@
     &__price {
         margin-top: 1rem;
         font-size: 3rem;
-        color: crimson;
+        // color: crimson;
         font-weight: bold;
     }
 
     &__duration {
         font-size: 2.4rem;
-        color: crimson;
+        // color: crimson;
         font-weight: bold;
     }
 
@@ -35,4 +36,8 @@
         font-size: 1.3rem;
         padding: 0 .8rem;
     }
+}
+
+.activeBorder {
+    border: 3px solid orangered;
 }

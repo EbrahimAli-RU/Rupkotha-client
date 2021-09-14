@@ -1,9 +1,9 @@
 import React from 'react';
 
-const DotSpinner = () => {
+const Spinner = () => {
     return (
         <div className="crabbly_spinner"></div>
     );
 };
 
-export default DotSpinner;
+export default Spinner;

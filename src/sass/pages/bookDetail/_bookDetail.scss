@@ -1,68 +1,78 @@
 .book__detail {
-    &__content {
-        width: 80%;
-        margin: 2rem auto;
-        box-sizing: border-box;
-        nav {
-            margin-top: 5rem;
-            height: 2.8rem;
-            border-bottom: 2px solid var(--color-Grey-dark-2);
-            ul {
-                list-style: none;
-                display: flex;
-
-                li {
-                    cursor: pointer;
-                    font-family: 'Roboto', sans-serif;
-                    font-size: 1.6rem;
-                    padding: 0 1.8rem;
-                    // border-bottom: 3px solid transparent;
-
-                    // &:hover {
-                    //     border-bottom: 3px solid red;
-                    // }
-                }
-            }
-        }
-    }
-
-    &__channel{
-        &__content {
-        width: 80%;
-        margin: auto;
-      }
-      &-title {
-          font-family: 'Lobster', sans-serif;
-          padding-top: 2rem;
-          font-size: 2rem;
-      }
-    }
-
-    &__detail__content {
+  &__content {
+    width: 80%;
+    margin: 2rem auto;
+    box-sizing: border-box;
+    nav {
+      margin-top: 5rem;
+      height: 2.8rem;
+      border-bottom: 2px solid var(--color-Grey-dark-2);
+      ul {
+        list-style: none;
         display: flex;
-        min-height: 30vh;
-        margin-top: 1rem;
-        &__long-description {
-            flex: 0 0 50%;
-            background-color: blueviolet;
-        }
 
-        &__about-book {
-            flex: 1;
-            background-color: orangered;
-        }
+        li {
+          cursor: pointer;
+          font-family: "Roboto", sans-serif;
+          font-size: 1.6rem;
+          padding: 0 1.8rem;
+          // border-bottom: 3px solid transparent;
 
+          // &:hover {
+          //     border-bottom: 3px solid red;
+          // }
+        }
+      }
     }
+  }
+
+  &__channel {
+    &__content {
+      margin: auto;
+    }
+    &-title {
+      font-family: "Lobster", sans-serif;
+      padding-top: 2rem;
+      font-size: 2rem;
+    }
+  }
+
+  &__detail__content {
+    display: flex;
+    min-height: 30vh;
+    margin-top: 1rem;
+    &__long-description {
+      flex: 0 0 64%;
+    }
+
+    &__about-book {
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
 }
 
 .hoverClass {
-    border-bottom: 3px solid red;
+  border-bottom: 3px solid var(--color-Primary);
 }
 
 .active__block {
-    display: block;
+  display: block;
 }
 
 .inactive__block {
-    display: none;
+  display: none;
+}
+
+.detail_paragrap {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  color: black;
+}
+
+.detail_paragrap_title {
+  font-size: 1.4rem;
+  color: black;
 }

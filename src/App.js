@@ -27,6 +27,7 @@ import Wishlist from './container/wishList/Wishlist';
 import * as action from './redux/action/index'
 
 import './sass/main.scss'
+import AdminMain from './admin/layout/Main'
 
 function App() {
   ///STATE
@@ -59,11 +60,11 @@ function App() {
     dispatch(action.saveChildHandler(JSON.parse(localStorage.getItem('currentProfile'))))
   }, [])
 
-  console.log(tokenFromRedux.child === null)
   let routes
   if (tokenFromRedux.token === '') {
     routes = (
       <Switch>
+        <Route path='/admin' component={AdminMain} />
         <Route path='/activate/:token' exact component={Activation} />
         <Route path='/forgot-password' component={ForgotPassword} />
         <Route path='/register' exact component={Signup} />
@@ -75,9 +76,9 @@ function App() {
     )
   }
   else if (tokenFromRedux.token !== '' && tokenFromRedux.child === null) {
-    console.log('ELSE IF NULL')
     routes = (
       <Switch>
+        <Route path='/admin' component={AdminMain} />
         <Route path='/activate/:token' exact component={Activation} />
         <Route path='/forgot-password' component={ForgotPassword} />
         <Route path='/select/profile' component={SelectProfile} />
@@ -92,9 +93,9 @@ function App() {
       </Switch>
     )
   } else if (tokenFromRedux.child !== null) {
-    console.log('ELSE IF NOT NULL')
     routes = (
       <Switch>
+        <Route path='/admin' component={AdminMain} />
         <Route path='/account' component={Account} />
         <Route path='/activate/:token' exact component={Activation} />
         <Route path='/book/channel' component={ViewMore} />

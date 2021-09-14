@@ -1,35 +1,35 @@
 .wishlist__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10rem;
-    &__title {
-        text-align: center;
-        font-size: 5rem;
-        font-family: Lobster;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+  &__title {
+    text-align: center;
+    font-size: 5rem;
+    font-family: Lobster;
+  }
 }
 
 .wishlist__content {
-    width: 80%;
+  width: 80%;
 }
 
 .wishlist__message {
-    font-size: 3.5rem;
-    font-family: Lobster;
-    margin-top: 10rem;
-    padding-bottom: 3rem;
+  font-size: 3.5rem;
+  font-family: Lobster;
+  margin-top: 10rem;
+  padding-bottom: 3rem;
 }
 
 .go__home__page {
+  text-decoration: none;
+  font-family: Lobster;
+  font-size: 2rem;
+  border-bottom: 1px solid #007bff;
+  &:hover {
     text-decoration: none;
-    font-family: Lobster;
-    font-size: 2rem;
-    border-bottom: 1px solid #007bff;
-    &:hover {
-        text-decoration: none;
-        border-bottom: 1px solid darken(#007bff, 15%);
-    }
-
+    border-bottom: 1px solid darken(#007bff, 15%);
+  }
 }
+//"Poppins", sans-serif

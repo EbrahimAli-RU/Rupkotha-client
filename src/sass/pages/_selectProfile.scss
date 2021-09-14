@@ -1,23 +1,46 @@
 .select__profile {
-    &__container {
-        @include center-element(50%);
-        min-height: 60vh;
-    }
+  &__container {
+    @include center-element(50%);
+    min-height: 60vh;
+  }
 
-    &__title {
-        text-align: center;
-        font-size: 4.2rem;
-        font-style: italic;
-        color: $color-black;
-    }
+  &__title {
+    text-align: center;
+    font-size: 4.2rem;
+    color: $color-black;
+  }
 
-    &__btn-search {
-        justify-content: space-around;
-        display: flex;
-        align-items: center;
-    }
-  
-    &__wrapper {
-        margin: auto;
-    }
+  &__btn-search {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    margin-top: 4rem;
+  }
+
+  &__wrapper {
+    margin: 4rem auto;
+  }
+}
+
+.add_profile_button {
+  background-color: darken(rgb(229, 240, 255), 15%);
+  color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  padding: 0.7rem 2rem;
+  font-weight: 500;
+  border-radius: 10rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-out;
+  span {
+    margin-left: 0.2rem;
+  }
+
+  &:hover {
+    background-color: rgb(229, 240, 255);
+    color: rgb(36, 82, 246);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 0px 0px;
+  }
 }
