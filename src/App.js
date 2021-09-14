@@ -60,7 +60,6 @@ function App() {
     dispatch(action.saveChildHandler(JSON.parse(localStorage.getItem('currentProfile'))))
   }, [])
 
-  console.log(tokenFromRedux.child === null)
   let routes
   if (tokenFromRedux.token === '') {
     routes = (
@@ -77,7 +76,6 @@ function App() {
     )
   }
   else if (tokenFromRedux.token !== '' && tokenFromRedux.child === null) {
-    console.log('ELSE IF NULL')
     routes = (
       <Switch>
         <Route path='/admin' component={AdminMain} />
@@ -95,7 +93,6 @@ function App() {
       </Switch>
     )
   } else if (tokenFromRedux.child !== null) {
-    console.log('ELSE IF NOT NULL')
     routes = (
       <Switch>
         <Route path='/admin' component={AdminMain} />
