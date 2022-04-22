@@ -3,10 +3,10 @@
 Rupkotha is a story book platform for child. Created using `react.js`, `node.js`, `express.js`, `mongoDB`. Demo [here](https://www.youtube.com/watch?v=V3kbNCrW1CE)
 
 ## Table of content
-  * [General info](https://github.com/EbrahimAli-RU/Rupkotha-client/edit/main/README.md#general-info)
-  * [Features](https://github.com/EbrahimAli-RU/Rupkotha-client/edit/main/README.md#features)
-  * [Setup](https://github.com/EbrahimAli-RU/Rupkotha-client/edit/main/README.md#features)
-  * [Contact](https://github.com/EbrahimAli-RU/Rupkotha-client/edit/main/README.md#contact)
+  * [General info](https://github.com/EbrahimAli-RU/Rupkotha-client#general-info)
+  * [Features](https://github.com/EbrahimAli-RU/Rupkotha-client#features)
+  * [Setup](https://github.com/EbrahimAli-RU/Rupkotha-client#features)
+  * [Contact](https://github.com/EbrahimAli-RU/Rupkotha-client#contact)
 
 
 ## General Info
